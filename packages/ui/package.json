@@ -1,0 +1,19 @@
+{
+  "name": "tw-ui",
+  "version": "1.0.0",
+  "description": "UI components of TW repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trustwallet/tw-monorepo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trustwallet/tw-monorepo/issues"
+  },
+  "homepage": "https://github.com/trustwallet/tw-monorepo#readme"
+}
