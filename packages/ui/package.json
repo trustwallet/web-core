@@ -1,5 +1,5 @@
 {
-  "name": "tw-ui",
+  "name": "@tw/ui",
   "version": "1.0.0",
   "description": "UI components of TW repo",
   "main": "index.js",
@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/trustwallet/tw-monorepo/issues"
   },
-  "homepage": "https://github.com/trustwallet/tw-monorepo#readme"
+  "homepage": "https://github.com/trustwallet/tw-monorepo#readme",
+  "keywords": []
 }
