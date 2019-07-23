@@ -1,6 +1,6 @@
 {
   "name": "@tw/ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "UI components of TW repo",
   "main": "index.js",
   "scripts": {
