@@ -1,7 +1,7 @@
 {
   "name": "@trustwallet/ui",
   "version": "0.0.3",
-  "description": "UI components of TW repo",
+  "description": "UI components of Trust Wallet repo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
