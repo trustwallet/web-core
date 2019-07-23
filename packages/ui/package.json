@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/trustwallet/tw-monorepo.git"
+    "url": "git+ssh://git@github.com/trustwallet/web-core.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/trustwallet/tw-monorepo/issues"
+    "url": "https://github.com/trustwallet/web-core/issues"
   },
-  "homepage": "https://github.com/trustwallet/tw-monorepo#readme",
+  "homepage": "https://github.com/trustwallet/web-core#readme",
   "keywords": []
 }
