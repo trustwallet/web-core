@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/walletconnect",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Trust WalletConnect extensions",
   "main": "lib/index.js",
   "directories": {
