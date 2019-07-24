@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "UI components of Trust Wallet",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,6 @@
     "url": "https://github.com/trustwallet/web-core/issues"
   },
   "homepage": "https://github.com/trustwallet/web-core#readme",
-  "keywords": []
+  "keywords": [],
+  "gitHead": "1a0bcf3deb4b5de746a43bbd1e8caf73fdb6cafc"
 }
