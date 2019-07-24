@@ -27,6 +27,9 @@
   },
   "homepage": "https://github.com/trustwallet/web-core#readme",
   "keywords": [],
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -50,5 +53,5 @@
     "@walletconnect/core": "^1.0.0-beta.31",
     "@walletconnect/types": "^1.0.0-beta.31"
   },
-  "gitHead": "1a0bcf3deb4b5de746a43bbd1e8caf73fdb6cafc"
+  "gitHead": "52410a468358de141592cc9c44d9626902365c33"
 }

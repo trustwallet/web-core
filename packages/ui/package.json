@@ -17,5 +17,8 @@
   },
   "homepage": "https://github.com/trustwallet/web-core#readme",
   "keywords": [],
-  "gitHead": "1a0bcf3deb4b5de746a43bbd1e8caf73fdb6cafc"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "52410a468358de141592cc9c44d9626902365c33"
 }
