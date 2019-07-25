@@ -1,1 +1,1 @@
-declare module '@web-core/walletconnect'
+declare module '@trustwallet/walletconnect'
