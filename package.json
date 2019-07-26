@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "yarn install && lerna bootstrap",
-    "publish": "lerna publish -- --access public",
+    "publish": "npm run bootstrap && npm run build && lerna publish -- --access public",
     "build": "lerna run build"
   },
   "devDependencies": {
