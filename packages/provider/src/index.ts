@@ -1,16 +1,17 @@
-import { IAccount } from "@trustwallet/types"
+import { IAccount } from "@trustwallet/types";
 
 interface IProvider {
-    getAccounts: () => Promise<IAccount[]>
-    signTransaction: (params: { network: number, transaction: any }) => Promise<string>
+    getAccounts: () => Promise<IAccount[]>;
+    signTransaction: (params: { network: number, transaction: any }) => Promise<string>;
 }
 
 export class TrustProvider {
     public static get isAvailable(): boolean {
-        return TrustProvider.provider !== undefined
+        return TrustProvider.provider !== undefined;
     }
 
     private static get provider(): IProvider {
+        // tslint:disable-next-line
         return window["trustProvider"];
     }
 
@@ -19,6 +20,6 @@ export class TrustProvider {
     }
 
     public static signTransaction(network: number, transaction: any): Promise<string> {
-        return TrustProvider.provider.signTransaction({ network: network, transaction: transaction });
+        return TrustProvider.provider.signTransaction({ network, transaction });
     }
 }
