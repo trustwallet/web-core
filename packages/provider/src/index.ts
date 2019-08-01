@@ -2,7 +2,7 @@ import { IAccount } from "@trustwallet/types"
 
 interface IProvider {
     getAccounts: () => Promise<IAccount[]>
-    signTransaction: (params: { network: number, transaction: any }) => Promise<any>
+    signTransaction: (params: { network: number, transaction: any }) => Promise<string>
 }
 
 export class TrustProvider {
@@ -18,7 +18,7 @@ export class TrustProvider {
         return TrustProvider.provider.getAccounts();
     }
 
-    public static signTransaction(network: number, transaction: any): Promise<any> {
+    public static signTransaction(network: number, transaction: any): Promise<string> {
         return TrustProvider.provider.signTransaction({ network: network, transaction: transaction });
     }
 }
