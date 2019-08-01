@@ -16,9 +16,7 @@
   "main": "",
   "types": "index.d.ts",
   "scripts": {},
-  "dependencies": {
-    "@types/mocha": "^5.2.6"
-  },
+  "dependencies": {},
   "publishConfig": {
     "access": "public"
   },
