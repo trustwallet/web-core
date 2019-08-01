@@ -1,3 +1,3 @@
-declare module '@trustwallet/provider'
+declare module "@trustwallet/provider"
 
 

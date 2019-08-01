@@ -1,6 +1,6 @@
 import { IAccount } from "@trustwallet/types"
 
-export interface IProvider {
+interface IProvider {
     getAccounts: () => Promise<IAccount[]>
     signTransaction: (params: { network: number, transaction: any }) => Promise<any>
 }
@@ -22,5 +22,3 @@ export class TrustProvider {
         return TrustProvider.provider.signTransaction({ network: network, transaction: transaction });
     }
 }
-
-export default TrustProvider
