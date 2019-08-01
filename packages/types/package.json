@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/types",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Trust common types",
   "homepage": "https://github.com/trustwallet/web-core#readme",
   "keywords": [],
@@ -16,7 +16,6 @@
   "main": "",
   "types": "index.d.ts",
   "scripts": {},
-  "dependencies": {},
   "publishConfig": {
     "access": "public"
   },
