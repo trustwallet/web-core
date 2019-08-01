@@ -1,22 +1,9 @@
-<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d)">
-<circle cx="22" cy="20" r="18" fill="white"/>
-</g>
-<path d="M22 28C26.4183 28 30 24.4183 30 20C30 15.5817 26.4183 12 22 12C17.5817 12 14 15.5817 14 20C14 24.4183 17.5817 28 22 28Z" stroke="#3375BB"/>
-<path d="M22.0001 23.7333C24.0619 23.7333 25.7334 22.0618 25.7334 19.9999C25.7334 17.9381 24.0619 16.2666 22.0001 16.2666C19.9382 16.2666 18.2667 17.9381 18.2667 19.9999C18.2667 22.0618 19.9382 23.7333 22.0001 23.7333Z" stroke="#3375BB"/>
-<path d="M24.6389 17.3609L27.6565 14.3433" stroke="#3375BB"/>
-<path d="M24.6389 22.6392L27.6565 25.6568" stroke="#3375BB"/>
-<path d="M19.3611 22.6392L16.3435 25.6568" stroke="#3375BB"/>
-<path d="M19.3611 17.3609L16.3435 14.3433" stroke="#3375BB"/>
-<defs>
-<filter id="filter0_d" x="0" y="0" width="44" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset dy="2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-</defs>
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="18" cy="18" r="18" fill="white"/>
+<path d="M18 28C23.5228 28 28 23.5228 28 18C28 12.4772 23.5228 8 18 8C12.4772 8 8 12.4772 8 18C8 23.5228 12.4772 28 18 28Z" stroke="#AAAAAA" stroke-width="1.5"/>
+<path d="M17.9997 22.6663C20.577 22.6663 22.6663 20.577 22.6663 17.9997C22.6663 15.4223 20.577 13.333 17.9997 13.333C15.4223 13.333 13.333 15.4223 13.333 17.9997C13.333 20.577 15.4223 22.6663 17.9997 22.6663Z" stroke="#AAAAAA" stroke-width="1.5"/>
+<path d="M21.2991 14.7012L25.0711 10.9292" stroke="#AAAAAA" stroke-width="1.5"/>
+<path d="M21.2991 21.2993L25.0711 25.0713" stroke="#AAAAAA" stroke-width="1.5"/>
+<path d="M14.7014 21.2993L10.9294 25.0713" stroke="#AAAAAA" stroke-width="1.5"/>
+<path d="M14.7014 14.7012L10.9294 10.9292" stroke="#AAAAAA" stroke-width="1.5"/>
 </svg>
