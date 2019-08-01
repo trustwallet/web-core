@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/provider",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Trust provider wrapper",
   "author": "TrsutWallet",
   "license": "ISC",
@@ -41,7 +41,7 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/types": "^0.0.13"
+    "@trustwallet/types": "^0.0.14"
   },
   "publishConfig": {
     "access": "public"
