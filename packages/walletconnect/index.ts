@@ -2,11 +2,7 @@ import Connector from "@walletconnect/core"
 import { IWalletConnectOptions } from "@walletconnect/types"
 import * as cryptoLib from "@walletconnect/browser/src/webCrypto"
 import WebStorage from "@walletconnect/browser/src/webStorage"
-
-export interface IAccount {
-    network: number
-    address: string
-}
+import { IAccount } from "@trustwallet/types"
 
 class WalletConnect extends Connector {
     constructor (opts: IWalletConnectOptions) {
