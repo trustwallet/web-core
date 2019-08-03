@@ -1,6 +1,7 @@
 # web-core
 
-This repository is a monorepo including the [`trust wallet`](https://trustwallet.com) developers components and tools. Each public sub-package is independently published to NPM.
+This repository is a monorepo including the [`trust wallet`](https://trustwallet.com) developers components and tools. 
+Each public sub-package is independently published to NPM.
 
 #### Typescript/JavaScript Packages
 
