@@ -2,3 +2,5 @@
 lib
 **/.idea/*
 **/package-lock.json
+
+**/*/*.map.js

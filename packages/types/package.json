@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+ssh://git@github.com/trustwallet/web-core.git"
   },
-  "main": "",
-  "types": "index.d.ts",
+  "main": "src/index.d.ts",
+  "types": "src/index.d.ts",
   "scripts": {},
   "publishConfig": {
     "access": "public"
