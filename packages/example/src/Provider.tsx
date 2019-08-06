@@ -106,12 +106,10 @@ export default class Provider extends React.Component<IProps, IState> {
         stakeMessage: {
           delegatorAddress: "cosmos1hsk6jryyqjfhp5dhc55tc9jtckygx0eph6dd02",
           validatorAddress: "cosmosvaloper1zkupr83hrzkn3up5elktzcq3tuft8nxsmwdqgp",
-          amounts: [
-            {
-              denom: "uatom",
-              amount: "100000"
-            }
-          ]
+          amount: {
+            denom: "uatom",
+            amount: "100000"
+          }
         }
       };
 
@@ -140,15 +138,13 @@ export default class Provider extends React.Component<IProps, IState> {
           gas: "200000"
         },
         sequence: "40",
-        stakeMessage: {
+        unstakeMessage: {
           delegatorAddress: "cosmos1hsk6jryyqjfhp5dhc55tc9jtckygx0eph6dd02",
           validatorAddress: "cosmosvaloper1zkupr83hrzkn3up5elktzcq3tuft8nxsmwdqgp",
-          amounts: [
-            {
-              denom: "uatom",
-              amount: "100000"
-            }
-          ]
+          amount: {
+            denom: "uatom",
+            amount: "100000"
+          }
         }
       };
 
