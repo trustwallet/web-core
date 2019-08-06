@@ -79,7 +79,7 @@ export default class Provider extends React.Component<IProps, IState> {
         };
 
       let result = await TrustProvider.signTransaction(network, transaction);
-      openModal("Transaction Signed", <samp>{result}</samp>);
+      openModal("Cosmos Send Coins Signed", <samp>{result}</samp>);
     } catch (e) {
       openModal("Sign Error", <div>{e}</div>);
     }
@@ -114,7 +114,7 @@ export default class Provider extends React.Component<IProps, IState> {
       };
 
       let result = await TrustProvider.signTransaction(network, transaction);
-      openModal("Transaction Signed", <samp>{result}</samp>);
+      openModal("Cosmos Stake Signed", <samp>{result}</samp>);
     } catch (e) {
       openModal("Sign Error", <div>{e}</div>);
     }
@@ -149,7 +149,7 @@ export default class Provider extends React.Component<IProps, IState> {
       };
 
       let result = await TrustProvider.signTransaction(network, transaction);
-      openModal("Transaction Signed", <samp>{result}</samp>);
+      openModal("Cosmos Unstake Signed", <samp>{result}</samp>);
     } catch (e) {
       openModal("Sign Error", <div>{e}</div>);
     }
@@ -180,7 +180,7 @@ export default class Provider extends React.Component<IProps, IState> {
       };
 
       let result = await TrustProvider.signTransaction(network, transaction);
-      openModal("Transaction Signed", <samp>{result}</samp>);
+      openModal("Cosmos Withdraw Signed", <samp>{result}</samp>);
     } catch (e) {
       openModal("Sign Error", <div>{e}</div>);
     }
