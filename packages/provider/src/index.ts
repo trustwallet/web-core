@@ -5,14 +5,20 @@ interface IProvider {
     signTransaction: (params: { network: number, transaction: any }) => Promise<string>;
 }
 
+declare global {
+    // tslint:disable-next-line
+    interface Window {
+        provider: any;
+    }
+}
+
 export class TrustProvider {
     public static get isAvailable(): boolean {
         return TrustProvider.provider !== undefined;
     }
-
     private static get provider(): IProvider {
         // tslint:disable-next-line
-        return window["trustProvider"];
+        return window.provider;
     }
 
     public static getAccounts(): Promise<IAccount[]> {
