@@ -173,7 +173,7 @@ export default class WalletConnectExamples extends React.Component<IProps, IStat
       };
 
       let result = await this.walletConnector.trustSignTransaction(network, transaction);
-      openModal("Cosmos Withdraw Signed", <samp>{result}</samp>);
+      openModal("Cosmos Stake Signed", <samp>{result}</samp>);
     } catch (e) {
       openModal("Sign Error", <div>{e}</div>);
     }
@@ -209,7 +209,7 @@ export default class WalletConnectExamples extends React.Component<IProps, IStat
       };
 
       let result = await this.walletConnector.trustSignTransaction(network, transaction);
-      openModal("Cosmos Withdraw Signed", <samp>{result}</samp>);
+      openModal("Cosmos Unstake Signed", <samp>{result}</samp>);
     } catch (e) {
       openModal("Sign Error", <div>{e}</div>);
     }
