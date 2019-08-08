@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.navbar a.active {
-  color: #007bff !important;
+#navigation a.active {
+  color: #007bff;
   font-weight: bold;
 }

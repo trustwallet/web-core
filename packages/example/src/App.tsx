@@ -52,7 +52,7 @@ export default class App extends React.Component<IProps, IState> {
             <Container>
               <Navbar.Brand>TrustWallet Examples</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
+              <Navbar.Collapse id="navigation">
                 <Nav className="mr-auto">
                   <LinkContainer exact to="/">
                     <Nav.Link>Provider</Nav.Link>
