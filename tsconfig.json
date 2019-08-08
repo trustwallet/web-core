@@ -22,7 +22,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@trustwallet/types"]
+    "jsx": "preserve"
   },
   "include": ["./node_modules/@trustwallet"],
   "references": [
@@ -30,6 +30,7 @@
     { "path": "./packages/walletconnect" },
     { "path": "./packages/provider" },
     { "path": "./packages/types" },
-    { "path": "./packages/eslint-config" }
+    { "path": "./packages/eslint-config" },
+    { "path":  "./packages/example" }
   ]
 }

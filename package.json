@@ -8,10 +8,13 @@
     "nuke": "rm -rf node_modules; for d in packages/*/node_modules; do echo $d; rm -rf $d; done",
     "prettify": "prettier --parser typescript --single-quote --write 'packages/**/*.{ts,tsx}'",
     "check-prettier": "prettier --parser typescript --single-quote --list-different 'packages/**/*.{ts,tsx}'",
-    "lint": "lerna run lint"
+    "lint": "lerna run lint",
+    "test": "lerna run test"
   },
   "devDependencies": {
-    "lerna": "^3.16.2"
+    "@types/jest": "^24.0.0",
+    "lerna": "^3.16.4",
+    "ts-jest": "^24.0.0"
   },
   "workspaces": [
     "packages/*"

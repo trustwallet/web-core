@@ -4,3 +4,5 @@ lib
 **/package-lock.json
 
 **/*/*.map.js
+
+/coverage
