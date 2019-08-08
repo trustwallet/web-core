@@ -8,7 +8,7 @@ interface IProvider {
 declare global {
     // tslint:disable-next-line
     interface Window {
-        provider: any;
+        trustProvider: any;
     }
 }
 
@@ -16,9 +16,10 @@ export class TrustProvider {
     public static get isAvailable(): boolean {
         return TrustProvider.provider !== undefined;
     }
+
     private static get provider(): IProvider {
         // tslint:disable-next-line
-        return window.provider;
+        return window.trustProvider;
     }
 
     public static getAccounts(): Promise<IAccount[]> {

@@ -9,8 +9,8 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import Provider from "./Provider";
-import WalletConnect from "./WalletConnect";
+import ProviderExamples from "./ProviderExamples";
+import WalletConnectExamples from "./WalletConnectExamples";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -48,12 +48,12 @@ export default class App extends React.Component<IProps, IState> {
     return (
       <>
         <Router>
-          <Navbar bg="light" expand="lg">
+          <Navbar bg="light" expand="lg" >
             <Container>
               <Navbar.Brand>TrustWallet Examples</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto" defaultActiveKey="/provider">
+                <Nav className="mr-auto">
                   <LinkContainer exact to="/">
                     <Nav.Link>Provider</Nav.Link>
                   </LinkContainer>
@@ -65,8 +65,8 @@ export default class App extends React.Component<IProps, IState> {
             </Container>
           </Navbar>
           <Container className="content">
-            <Route exact path="/" render={() => <Provider closeModal={this.closeModal} openModal={this.openModal} /> } />
-            <Route path="/walletconnect" component={WalletConnect} />
+            <Route exact path="/" render={() => <ProviderExamples closeModal={this.closeModal} openModal={this.openModal}/> } />
+            <Route path="/walletconnect" render={() => <WalletConnectExamples closeModal={this.closeModal} openModal={this.openModal}/> } />
           </Container>
         </Router>
 
