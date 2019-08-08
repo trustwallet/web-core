@@ -1,6 +1,6 @@
-declare module "@trustwallet/types" {
-    export interface IAccount {
-        network: number
-        address: string
+declare module '@trustwallet/types' {
+    export interface Account {
+        network: number;
+        address: string;
     }
 }
