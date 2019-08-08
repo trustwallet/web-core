@@ -16,7 +16,7 @@ interface IProps {
   closeModal(): void,
 }
 
-export default class Provider extends React.Component<IProps, IState> {
+export default class ProviderExamples extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -91,6 +91,7 @@ export default class Provider extends React.Component<IProps, IState> {
     try {
       let network = 118; // Cosmos
       let transaction = {
+        typePrefix: "auth/StdTx",
         accountNumber: "1035",
         chainId: "cosmoshub-2",
         fee: {
@@ -126,6 +127,7 @@ export default class Provider extends React.Component<IProps, IState> {
     try {
       let network = 118; // Cosmos
       let transaction = {
+        typePrefix: "auth/StdTx",
         accountNumber: "1035",
         chainId: "cosmoshub-2",
         fee: {
@@ -161,6 +163,7 @@ export default class Provider extends React.Component<IProps, IState> {
     try {
       let network = 118; // Cosmos
       let transaction = {
+        typePrefix: "auth/StdTx",
         accountNumber: "1035",
         chainId: "cosmoshub-2",
         fee: {
@@ -197,7 +200,7 @@ export default class Provider extends React.Component<IProps, IState> {
         <Card.Header>Provider Examples</Card.Header>
         <Card.Body>
           <Card.Title>
-            Trust Provider <Badge variant={ this.isAvailable ? "success" : "danger" }>{this.isAvailable ? "is available" : "is not Available"}</Badge>
+            Trust Provider <Badge variant={ this.isAvailable ? "success" : "danger" }>{this.isAvailable ? "is available" : "is not available"}</Badge>
           </Card.Title>
           <Button size="lg" disabled={!this.isAvailable} onClick={this.testGetAccounts}>Get Accounts</Button>
         </Card.Body>
