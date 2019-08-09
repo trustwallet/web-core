@@ -2,7 +2,7 @@
 lib
 **/.idea/*
 **/package-lock.json
-
+**/yarn-error.log
 **/*/*.map.js
 
 /coverage
