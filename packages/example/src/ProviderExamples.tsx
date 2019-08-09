@@ -7,8 +7,6 @@ import { TrustProvider } from '@trustwallet/provider';
 import { Account } from '@trustwallet/types';
 
 interface State {
-    getAccountsLoading: boolean;
-    signTransactionLoading: boolean;
 }
 
 interface Props {
@@ -19,10 +17,6 @@ interface Props {
 export default class ProviderExamples extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = {
-            getAccountsLoading: false,
-            signTransactionLoading: false,
-        };
     }
 
     private async getAccount(network: number): Promise<Account> {
@@ -187,6 +181,108 @@ export default class ProviderExamples extends React.Component<Props, State> {
         }
     };
 
+    testBnbTransfer = async (): Promise<void> => {
+        let { openModal } = this.props;
+
+        try {
+            let network = 714; // Binance
+            let transaction = {
+                accountNumber: "29",
+                chainId: "Binance-Chain-Tigris",
+                data: null,
+                memo: "",
+                sendOrder: {
+                    inputs: [
+                        {
+                            address: "bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl",
+                            coins: [
+                                {
+                                    amount: 1000000,
+                                    denom: "BNB"
+                                }
+                            ]
+                        }
+                    ],
+                    outputs: [
+                        {
+                            address: "bnb14u7newkxwdhcuhddvtg2n8n96m9tqxejsjuuhn",
+                            coins: [
+                                {
+                                    amount: 1000000,
+                                    denom: "BNB"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                sequence: "300",
+                source: "1"
+            };
+
+            let result = await TrustProvider.signTransaction(network, transaction);
+            openModal('Binance Transfer Signed', <samp>{result}</samp>);
+        } catch (e) {
+            openModal('Sign Error', <div>{e}</div>);
+        }
+    };
+
+    testBnbCreateOrder = async (): Promise<void> => {
+        let { openModal } = this.props;
+
+        try {
+            let network = 714; // Binance
+            let transaction = {
+                accountNumber: "29",
+                chainId: "Binance-Chain-Tigris",
+                data: null,
+                memo: "",
+                tradeOrder: {
+                    id: "33BBF307B98146F13D20693CF946C2D77A4CAF28-300",
+                    ordertype: 2,
+                    price: 7800,
+                    quantity: 10000000000,
+                    sender: "bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl",
+                    side: 1,
+                    symbol: "PVT-554_BNB",
+                    timeinforce: 1
+                },
+                sequence: "299",
+                source: "1"
+            };
+
+            let result = await TrustProvider.signTransaction(network, transaction);
+            openModal('Binance Create Order Signed', <samp>{result}</samp>);
+        } catch (e) {
+            openModal('Sign Error', <div>{e}</div>);
+        }
+    };
+
+    testBnbCancelOrder = async (): Promise<void> => {
+        let { openModal } = this.props;
+
+        try {
+            let network = 714; // Binance
+            let transaction = {
+                accountNumber: "29",
+                chainId: "Binance-Chain-Tigris",
+                data: null,
+                memo: "",
+                cancelOrder: {
+                    refid: "33BBF307B98146F13D20693CF946C2D77A4CAF28-300",
+                    sender: "bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl",
+                    symbol: "PVT-554_BNB"
+                },
+                sequence: "300",
+                source: "1"
+            };
+
+            let result = await TrustProvider.signTransaction(network, transaction);
+            openModal('Binance Cancel Order Signed', <samp>{result}</samp>);
+        } catch (e) {
+            openModal('Sign Error', <div>{e}</div>);
+        }
+    };
+
     get isAvailable(): boolean {
         return TrustProvider.isAvailable;
     }
@@ -222,6 +318,20 @@ export default class ProviderExamples extends React.Component<Props, State> {
                         </Button>
                         <Button size="lg" disabled={!this.isAvailable} onClick={this.testCosmosWithdraw}>
                             Withdraw
+                        </Button>
+                    </Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header>Sign BNB Transaction Examples</Card.Header>
+                    <Card.Body>
+                        <Button size="lg" disabled={!this.isAvailable} onClick={this.testBnbTransfer}>
+                            Transfer
+                        </Button>
+                        <Button size="lg" disabled={!this.isAvailable} onClick={this.testBnbCreateOrder}>
+                            Create Trade Order
+                        </Button>
+                        <Button size="lg" disabled={!this.isAvailable} onClick={this.testBnbCancelOrder}>
+                            Cancel Trade Order
                         </Button>
                     </Card.Body>
                 </Card>
