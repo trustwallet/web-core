@@ -1,5 +1,7 @@
 # web-core
 
+[![Build Status](https://dev.azure.com/TrustWallet/Web%20Core/_apis/build/status/Web%20Core-CI?branchName=master)](https://dev.azure.com/TrustWallet/Web%20Core/_build/latest?definitionId=37&branchName=master)
+
 This repository is a monorepo including the [`trust wallet`](https://trustwallet.com) developers components and tools. 
 Each public sub-package is independently published to NPM.
 
