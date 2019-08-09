@@ -22,10 +22,12 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "typeRoots": []
   },
   "include": [],
   "references": [
-    { "path": "./"}
+    { "path": "./packages/ui" },
+    { "path": "./packages/walletconnect" }
   ]
 }

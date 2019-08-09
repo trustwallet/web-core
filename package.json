@@ -1,15 +1,15 @@
 {
-  "name": "root",
+  "name": "tw-monorepo",
   "private": true,
   "scripts": {
     "bootstrap": "yarn install && lerna bootstrap",
-    "publish": "npm run bootstrap && npm run build && lerna publish -- --access public",
+    "publish": "yarn bootstrap && yarn build && lerna publish -- --access public",
     "build": "lerna run build"
   },
   "devDependencies": {
     "lerna": "^3.16.2"
   },
-  "dependencies": {
-    "@types/react-router-dom": "^4.3.4"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }
