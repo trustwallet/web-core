@@ -32,10 +32,5 @@ module.exports = {
         "indent": "off",
         "@typescript-eslint/indent": ["error", 4],
 
-    },
-    settings: {
-        react: {
-            version: require('./package.json').dependencies.react,
-        },
-    },
+    }
 };
