@@ -4,6 +4,7 @@
     "outDir": "lib"
   },
   "include": [
-    "../../node_modules/@walletconnect/browser/src/"
+    "../../node_modules/@walletconnect/browser/src/",
+    "../../node_modules/jest"
   ]
 }
