@@ -1,10 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig",
   "compilerOptions": {
     "outDir": "lib"
   },
   "include": [
-    "node_modules/@walletconnect/browser/src/webCrypto.ts",
-    "node_modules/@walletconnect/browser/src/webStorage.ts"
+    "../../node_modules/@walletconnect/browser/src/"
   ]
 }
