@@ -15,9 +15,19 @@
   },
   "main": "src/index.d.ts",
   "types": "src/index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "52410a468358de141592cc9c44d9626902365c33"
+  "gitHead": "52410a468358de141592cc9c44d9626902365c33",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
+  }
 }
