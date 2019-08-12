@@ -14,7 +14,7 @@
     "url": "git+ssh://git@github.com/trustwallet/web-core.git"
   },
   "scripts": {
-    "clean": "rm -rf lib",
+    "clean": "shx rm -rf lib",
     "build": "webpack",
     "test": "yarn jest --config ../../jest.config.js --colors",
     "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
@@ -44,6 +44,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.0.0",
     "prettier": "^1.18.2",
+    "shx": "^0.3.2",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.1.3",
