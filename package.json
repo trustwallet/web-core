@@ -18,6 +18,9 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest-fetch-mock": "^2.1.2",
     "lerna": "^3.16.4",
     "ts-jest": "^24.0.0",
     "wsrun": "^5.0.0"
@@ -26,6 +29,6 @@
     "packages/*"
   ],
   "resolutions": {
-    "jest":"^24.0.0"
+    "jest": "^24.0.0"
   }
 }
