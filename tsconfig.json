@@ -22,9 +22,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types"]
   },
-  "include": ["./node_modules/@trustwallet"],
   "references": [
     { "path": "./packages/ui" },
     { "path": "./packages/walletconnect" },

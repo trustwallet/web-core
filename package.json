@@ -1,7 +1,11 @@
 {
   "name": "tw-monorepo",
+  "engines": {
+    "node": ">=6.12"
+  },
   "private": true,
   "scripts": {
+    "clean": "wsrun --exclude-missing -parallel --fast-exit clean $PKG",
     "bootstrap": "yarn install && lerna bootstrap",
     "release": "yarn bootstrap && yarn build && lerna publish -- --access public",
     "build": "lerna link && wsrun --exclude-missing --stages build $PKG",
@@ -20,5 +24,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "resolutions": {
+    "jest":"^24.0.0"
+  }
 }
