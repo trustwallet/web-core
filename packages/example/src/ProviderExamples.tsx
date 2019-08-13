@@ -6,15 +6,12 @@ import Badge from 'react-bootstrap/Badge';
 import { TrustProvider } from '@trustwallet/provider';
 import { Account } from '@trustwallet/types';
 
-// @ts-ignore
-interface State {}
-
 interface Props {
     openModal(title: string, body: React.ReactNode): void;
     closeModal(): void;
 }
 
-export default class ProviderExamples extends React.Component<Props, State> {
+export default class ProviderExamples extends React.Component<Props, {}> {
     constructor(props: Props) {
         super(props);
     }
