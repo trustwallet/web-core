@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/eslint-config",
-  "version": "0.0.15",
+  "version": "0.0.16-alpha.0",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",

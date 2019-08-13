@@ -1,11 +1,11 @@
 {
   "name": "@trustwallet/example",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": true,
   "dependencies": {
-    "@trustwallet/provider": "^0.0.15",
-    "@trustwallet/types": "^0.0.15",
-    "@trustwallet/walletconnect": "^0.0.15",
+    "@trustwallet/provider": "^0.0.16",
+    "@trustwallet/types": "^0.0.16",
+    "@trustwallet/walletconnect": "^0.0.16",
     "@types/jest": "24.0.0",
     "@types/node": "12.6.9",
     "@types/react": "16.8.24",
@@ -31,7 +31,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
+    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
+    "clean": "shx rm -rf build"
   },
   "eslintConfig": {
     "extends": "../eslint-config/.eslintrc.js"
@@ -54,6 +55,7 @@
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "shx": "^0.3.2"
   }
 }

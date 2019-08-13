@@ -12,5 +12,14 @@ module.exports = {
     ],
     "coverageDirectory": "./coverage",
     "setupFiles": [
-    ]
+        "./config/setupJest.ts"
+    ],
+    "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "d.ts"
+    ],
 };

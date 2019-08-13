@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/types",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Trust common types",
   "homepage": "https://github.com/trustwallet/web-core#readme",
   "keywords": [],
@@ -13,10 +13,12 @@
     "type": "git",
     "url": "git+ssh://git@github.com/trustwallet/web-core.git"
   },
-  "main": "src/index.d.ts",
-  "types": "src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
+    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
+    "build": "tsc -b",
+    "clean": "shx rm -rf lib node_modules tsconfig.tsbuildinfo"
   },
   "publishConfig": {
     "access": "public"
@@ -28,6 +30,10 @@
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "shx": "^0.3.2"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0"
   }
 }
