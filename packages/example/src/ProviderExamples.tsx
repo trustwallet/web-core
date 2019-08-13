@@ -6,6 +6,7 @@ import Badge from 'react-bootstrap/Badge';
 import { TrustProvider } from '@trustwallet/provider';
 import { Account } from '@trustwallet/types';
 
+// @ts-ignore
 interface State {}
 
 interface Props {
