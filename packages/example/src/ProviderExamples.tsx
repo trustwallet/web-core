@@ -6,8 +6,7 @@ import Badge from 'react-bootstrap/Badge';
 import { TrustProvider } from '@trustwallet/provider';
 import { Account } from '@trustwallet/types';
 
-interface State {
-}
+interface State {}
 
 interface Props {
     openModal(title: string, body: React.ReactNode): void;
@@ -187,36 +186,36 @@ export default class ProviderExamples extends React.Component<Props, State> {
         try {
             let network = 714; // Binance
             let transaction = {
-                accountNumber: "29",
-                chainId: "Binance-Chain-Tigris",
+                accountNumber: '29',
+                chainId: 'Binance-Chain-Tigris',
                 data: null,
-                memo: "",
+                memo: '',
                 sendOrder: {
                     inputs: [
                         {
-                            address: "bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl",
+                            address: 'bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl',
                             coins: [
                                 {
                                     amount: 1000000,
-                                    denom: "BNB"
-                                }
-                            ]
-                        }
+                                    denom: 'BNB',
+                                },
+                            ],
+                        },
                     ],
                     outputs: [
                         {
-                            address: "bnb14u7newkxwdhcuhddvtg2n8n96m9tqxejsjuuhn",
+                            address: 'bnb14u7newkxwdhcuhddvtg2n8n96m9tqxejsjuuhn',
                             coins: [
                                 {
                                     amount: 1000000,
-                                    denom: "BNB"
-                                }
-                            ]
-                        }
-                    ]
+                                    denom: 'BNB',
+                                },
+                            ],
+                        },
+                    ],
                 },
-                sequence: "300",
-                source: "1"
+                sequence: '300',
+                source: '1',
             };
 
             let result = await TrustProvider.signTransaction(network, transaction);
@@ -232,22 +231,22 @@ export default class ProviderExamples extends React.Component<Props, State> {
         try {
             let network = 714; // Binance
             let transaction = {
-                accountNumber: "29",
-                chainId: "Binance-Chain-Tigris",
+                accountNumber: '29',
+                chainId: 'Binance-Chain-Tigris',
                 data: null,
-                memo: "",
+                memo: '',
                 tradeOrder: {
-                    id: "33BBF307B98146F13D20693CF946C2D77A4CAF28-300",
+                    id: '33BBF307B98146F13D20693CF946C2D77A4CAF28-300',
                     ordertype: 2,
                     price: 7800,
                     quantity: 10000000000,
-                    sender: "bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl",
+                    sender: 'bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl',
                     side: 1,
-                    symbol: "PVT-554_BNB",
-                    timeinforce: 1
+                    symbol: 'PVT-554_BNB',
+                    timeinforce: 1,
                 },
-                sequence: "299",
-                source: "1"
+                sequence: '299',
+                source: '1',
             };
 
             let result = await TrustProvider.signTransaction(network, transaction);
@@ -263,17 +262,17 @@ export default class ProviderExamples extends React.Component<Props, State> {
         try {
             let network = 714; // Binance
             let transaction = {
-                accountNumber: "29",
-                chainId: "Binance-Chain-Tigris",
+                accountNumber: '29',
+                chainId: 'Binance-Chain-Tigris',
                 data: null,
-                memo: "",
+                memo: '',
                 cancelOrder: {
-                    refid: "33BBF307B98146F13D20693CF946C2D77A4CAF28-300",
-                    sender: "bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl",
-                    symbol: "PVT-554_BNB"
+                    refid: '33BBF307B98146F13D20693CF946C2D77A4CAF28-300',
+                    sender: 'bnb1xwalxpaes9r0z0fqdy70j3kz6aayetegur38gl',
+                    symbol: 'PVT-554_BNB',
                 },
-                sequence: "300",
-                source: "1"
+                sequence: '300',
+                source: '1',
             };
 
             let result = await TrustProvider.signTransaction(network, transaction);
