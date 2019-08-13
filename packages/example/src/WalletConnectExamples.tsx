@@ -54,7 +54,7 @@ export default class WalletConnectExamples extends React.Component<Props, State>
 
     private subscribe(): void {
         // Subscribe to connection events
-        this.walletConnector.on('connect', (error: string) => {
+        this.walletConnector.on('connect', (error: Error | null) => {
             if (error) {
                 console.log('Error on connect:' + error);
             }
@@ -66,7 +66,7 @@ export default class WalletConnectExamples extends React.Component<Props, State>
         });
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this.walletConnector.on('session_update', (error: string, payload: any) => {
+        this.walletConnector.on('session_update', (error: Error | null, payload: any) => {
             if (error) {
                 console.log('Error on seccion_update:' + error);
             }
@@ -74,7 +74,7 @@ export default class WalletConnectExamples extends React.Component<Props, State>
         });
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        this.walletConnector.on('disconnect', (error: string, payload: any) => {
+        this.walletConnector.on('disconnect', (error: Error | null, payload: any) => {
             if (error) {
                 console.log('Error on disconnect:' + error);
             }

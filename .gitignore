@@ -8,3 +8,4 @@ lib
 **/*/tsconfig.tsbuildinfo
 
 /coverage
+**/*.env
