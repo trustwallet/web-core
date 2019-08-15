@@ -28,7 +28,7 @@ class _BitcoinRPC implements RPC {
 
     async getLatestBlock(): Promise<string> {
         return (await this.requester.request({
-            action: this.queryBuilder.BLOCK_INDEX.action,
+            action: this.queryBuilder.STATUS.action,
             url: this.queryBuilder.STATUS.url(),
         })).toString();
     }

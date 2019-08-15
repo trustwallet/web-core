@@ -16,10 +16,9 @@ export class Requester {
     async request<T>(query: QueriesI, params: any = {}): Promise<AllTypes> {
         switch (query.action) {
             case Query.STATUS:
-                return deserialize(BitcoinChainInfo, await rp(query.url, params));
+                return deserialize(BitcoinChainInfo, await rp(query.url, params)).backend.blocks;
             case Query.BLOCK_INDEX:
-                const res = deserialize(BitcoinChainInfo, await rp(query.url, params));
-                return res.backend.blocks;
+                return deserialize(BitcoinChainInfo, await rp(query.url, params));
             case Query.TX:
                 return deserialize(BitcoinTx, await rp(query.url, params));
             case Query.ADDRESS:
