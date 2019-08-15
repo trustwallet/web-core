@@ -9,7 +9,7 @@ import { QueriesBuilder } from './services/query-builder';
 import { RPC } from './rpc';
 
 @Service()
-class _BitcoinRPC implements RPC {
+class BitcoinRPCWrapped implements RPC {
     constructor(
         @Inject('blockbookAddr') addr: string,
         private requester: Requester,
@@ -83,5 +83,5 @@ export const BitcoinRPC: (blockbookAddr?: string) => RPC = (blockbookAddr?: stri
     if (blockbookAddr) {
         Container.set('blockbookAddr', blockbookAddr);
     }
-    return Container.get(_BitcoinRPC);
+    return Container.get(BitcoinRPCWrapped);
 };

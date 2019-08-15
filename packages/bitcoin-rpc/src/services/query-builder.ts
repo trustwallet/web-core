@@ -22,8 +22,14 @@ export class QueriesBuilder {
     };
     readonly XPUB = { action: Query.XPUB, url: (xpub: string) => `${this.BASE_URL}/${Query.XPUB}/${xpub}` };
     readonly UTXO = { action: Query.UTXO, url: (utxo: string) => `${this.BASE_URL}/${Query.UTXO}/${utxo}` };
-    readonly FEE = { action: Query.FEE, url: (blocks: number) => `${this.BASE_URL_OLD}/${Query.FEE}/${blocks}` };
-    readonly BLOCK = { action: Query.BLOCK, url: (block: number) => `${this.BASE_URL}/${Query.BLOCK}/${block}` };
+    readonly FEE = {
+        action: Query.FEE,
+        url: (blocks: number) => `${this.BASE_URL_OLD}/${Query.FEE}/${blocks}`,
+    };
+    readonly BLOCK = {
+        action: Query.BLOCK,
+        url: (block: number) => `${this.BASE_URL}/${Query.BLOCK}/${block}`,
+    };
     readonly SENDTX = { action: Query.SENDTX, url: () => `${this.BASE_URL}/${Query.SENDTX}` };
 
     // private to disallow creating other instances of this type

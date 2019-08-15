@@ -1,7 +1,8 @@
 import * as BitcoinRPC from './index';
+import { RPC } from './rpc';
 
 describe('bitcoinRPC', () => {
-    let BTC: any;
+    let BTC: RPC;
     let xpub: string;
     let address: string;
     let tx: string;
