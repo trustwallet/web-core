@@ -10,11 +10,11 @@ class Token {
 export class BitcoinBalanceResult {
     address: string;
 
-    @Transform(value => new BigNumber(value), {toClassOnly: true})
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
     balance: BigNumber;
 
     @Type(() => Token)
     tokens: Token[];
 
-    txids: string[]
+    txids: string[];
 }

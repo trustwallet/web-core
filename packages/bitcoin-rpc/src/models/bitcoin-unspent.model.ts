@@ -7,6 +7,6 @@ export class BitcoinUnspent {
     index: number;
     script: string;
 
-    @Transform(value => new BigNumber(value), {toClassOnly: true})
-    value: BigNumber
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
+    value: BigNumber;
 }
