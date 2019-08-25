@@ -22,6 +22,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
     "jsx": "preserve",
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types"]

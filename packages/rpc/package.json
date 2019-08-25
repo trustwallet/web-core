@@ -1,12 +1,15 @@
 {
-  "name": "@trustwallet/walletconnect",
-  "version": "0.0.16",
-  "description": "Trust WalletConnect extensions",
+  "name": "@trustwallet/rpc",
+  "version": "0.0.1",
+  "description": "RPC service repository",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
+  "files": [
+    "src/index.d.ts"
+  ],
   "scripts": {
     "clean": "shx rm -rf lib",
     "build": "webpack",
@@ -38,6 +41,7 @@
     "@types/jest": "^24.0.0",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
+    "dotenv": "^8.0.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
@@ -52,10 +56,28 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/types": "^0.0.16",
-    "@walletconnect/core": "^1.0.0-beta.32",
-    "@walletconnect/types": "^1.0.0-beta.32",
-    "@walletconnect/utils": "^1.0.0-beta.32"
+    "@types/node": "^12.7.1",
+    "@types/request-promise": "^4.1.44",
+    "bignumber.js": "^9.0.0",
+    "class-transformer": "^0.2.3",
+    "reflect-metadata": "^0.1.13",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "resolutions": {
+    "jest": "^24.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   },
   "gitHead": "ca18a425404a7ffc52cbaf7d7db7dd1d19525a70"
 }
