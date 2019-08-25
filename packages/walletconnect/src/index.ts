@@ -1,7 +1,7 @@
 import Connector from '@walletconnect/core';
 import { IWalletConnectOptions } from '@walletconnect/types';
-import * as cryptoLib from '@walletconnect/browser/src/webCrypto';
-import WebStorage from '@walletconnect/browser/src/webStorage';
+import * as cryptoLib from './webCrypto';
+import WebStorage from './webStorage';
 import { Account } from '@trustwallet/types';
 
 class WalletConnect extends Connector {

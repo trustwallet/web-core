@@ -7,11 +7,6 @@
     "lib": "lib",
     "test": "test"
   },
-  "files": [
-    "lib",
-    "index.ts",
-    "src/index.d.ts"
-  ],
   "scripts": {
     "clean": "shx rm -rf lib",
     "build": "webpack",
@@ -58,9 +53,9 @@
   },
   "dependencies": {
     "@trustwallet/types": "^0.0.16",
-    "@walletconnect/browser": "^1.0.0-beta.32",
     "@walletconnect/core": "^1.0.0-beta.32",
-    "@walletconnect/types": "^1.0.0-beta.32"
+    "@walletconnect/types": "^1.0.0-beta.32",
+    "@walletconnect/utils": "^1.0.0-beta.32"
   },
   "gitHead": "ca18a425404a7ffc52cbaf7d7db7dd1d19525a70"
 }

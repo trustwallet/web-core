@@ -8,8 +8,6 @@
     "test": "test"
   },
   "files": [
-    "lib",
-    "index.ts",
     "src/index.d.ts"
   ],
   "scripts": {
@@ -58,16 +56,13 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/types": "^0.0.16",
     "@types/node": "^12.7.1",
     "@types/request-promise": "^4.1.44",
     "bignumber.js": "^9.0.0",
     "class-transformer": "^0.2.3",
-    "jest": "^24.8.0",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4",
-    "typedi": "^0.8.0"
+    "request-promise": "^4.2.4"
   },
   "resolutions": {
     "jest": "^24.0.0"

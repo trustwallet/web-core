@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "outDir": "lib"
+    "outDir": "lib",
+    "rootDir": "src"
   },
   "include": [
-    "../../node_modules/@walletconnect/browser/src/",
-    "../../node_modules/jest"
+    "./src/**/*"
   ]
 }
