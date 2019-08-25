@@ -1,6 +1,6 @@
-import { BitcoinUnspentResult } from './models/bitcoin-unspent-result.model';
-import { BitcoinTx } from './models/bitcoin-tx.model';
-import { BitcoinTxBroadcastResult } from './models/bitcoin-tx-broadcast-result.model';
+import { BitcoinUnspentResult } from './bitcoin/models/BitcoinUnspentResult';
+import { BitcoinTx } from './bitcoin/models/BitcoinTransaction';
+import { BitcoinBroadcastResult } from './bitcoin/models/BitcoinBroadcastResult';
 
 export interface RPC {
     getLatestBlock(): Promise<string>;
@@ -9,5 +9,5 @@ export interface RPC {
     listTransactions(address: string): Promise<string[]>;
     getTransactionDetail(hash: string): Promise<BitcoinTx>;
     estimateFee(priority: number): Promise<any>;
-    broadcastTransaction(data: string): Promise<BitcoinTxBroadcastResult>;
+    broadcastTransaction(data: string): Promise<BitcoinBroadcastResult>;
 }
