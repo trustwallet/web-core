@@ -1,5 +1,5 @@
 import { Query } from './Query';
-import { BitcoinFeePriority } from './BitcoinFeePriority';
+import { BitcoinFeePriority } from './models/BitcoinFeePriority';
 
 describe('BitcoinQuery', () => {
     const baseUrl = 'https://btc1.trezor.io/api';

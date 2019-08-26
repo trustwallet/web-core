@@ -1,10 +1,10 @@
-import { BitcoinFeePriority } from './BitcoinFeePriority';
+import { BitcoinFeePriority } from './models/BitcoinFeePriority';
 
 export class Query {
-    baseUrl: string;
+    rpcUrl: string;
 
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
+    constructor(rpcUrl: string) {
+        this.rpcUrl = rpcUrl;
     }
 
     getLatestBlock = () => this.uri(`/`);
@@ -16,6 +16,6 @@ export class Query {
     broadcastTransaction = () => this.uri('/sendtx/');
 
     private uri(path: string): string {
-        return `${this.baseUrl}/v2${path}`;
+        return `${this.rpcUrl}/v2${path}`;
     }
 }

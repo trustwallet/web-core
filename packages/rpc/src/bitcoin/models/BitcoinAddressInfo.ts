@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import BigNumber from 'bignumber.js';
 import { Transform } from 'class-transformer';
 

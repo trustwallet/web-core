@@ -1,5 +1,5 @@
 import { BitcoinRPC } from './BitcoinRPC';
-import { BitcoinFeePriority } from './BitcoinFeePriority';
+import { BitcoinFeePriority } from './models/BitcoinFeePriority';
 
 describe('bitcoinRPC', () => {
     let rpc: BitcoinRPC;

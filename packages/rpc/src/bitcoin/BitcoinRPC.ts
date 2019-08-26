@@ -1,26 +1,23 @@
 import rp from 'request-promise';
-
-import { BitcoinUnspentResult } from './models/BitcoinUnspentResult';
-import { BitcoinBroadcastResult } from './models/BitcoinBroadcastResult';
-import { Query } from './Query';
-import { BitcoinBalanceResult } from './models/BitcoinBalanceResult';
-import { BitcoinTransactionDetail } from './models/BitcoinTransactionDetail';
-import { BitcoinEstimateFee } from './models/BitcoinEstimateFee';
+import 'reflect-metadata';
 import { deserialize, deserializeArray } from 'class-transformer';
-import { BitcoinFeePriority } from './BitcoinFeePriority';
 import BigNumber from 'bignumber.js';
+import { Query } from './Query';
+import { BitcoinBalanceResult, BitcoinBroadcastResult, BitcoinTransactionDetail, BitcoinUnspentResult } from './models';
+import { BitcoinEstimateFee } from './models/BitcoinEstimateFee';
+import { BitcoinFeePriority } from './models/BitcoinFeePriority';
 import { BitcoinChainInfo } from './models/BitcoinChainInfo';
 import { BitcoinAddressInfo } from './models/BitcoinAddressInfo';
 
 export class BitcoinRPC {
-    baseUrl: string;
+    rpcUrl: string;
 
-    constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
+    constructor(rpcUrl: string) {
+        this.rpcUrl = rpcUrl;
     }
 
     private query(): Query {
-        return new Query(this.baseUrl);
+        return new Query(this.rpcUrl);
     }
 
     async getLatestBlock(): Promise<BigNumber> {
