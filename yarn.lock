@@ -2080,6 +2080,16 @@
     "@svgr/plugin-svgo" "^4.0.3"
     loader-utils "^1.1.0"
 
+"@trustwallet/walletconnect@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@trustwallet/walletconnect/-/walletconnect-0.0.16.tgz#11ee2cec09bdb4ee3d30d94d68a5b3c8044bfda0"
+  integrity sha512-FJxFsBMXjLpikG6cocNnNDAzalBq9hoC5ZUS8sVuVKRnsEY/qQEjciy1Dkn+miqLzsVnBBYFSzFiEIoHrvzn0w==
+  dependencies:
+    "@trustwallet/types" "^0.0.16"
+    "@walletconnect/browser" "^1.0.0-beta.32"
+    "@walletconnect/core" "^1.0.0-beta.32"
+    "@walletconnect/types" "^1.0.0-beta.32"
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -2367,7 +2377,16 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@walletconnect/core@^1.0.0-beta.32":
+"@walletconnect/browser@^1.0.0-beta.32":
+  version "1.0.0-beta.33"
+  resolved "https://registry.yarnpkg.com/@walletconnect/browser/-/browser-1.0.0-beta.33.tgz#8c9592e85090b3a88b0b051f4523006c2408e474"
+  integrity sha512-QfS+U2r3IWajue4plEV4AZGT6wyEvQ3tIUbS/XDXxVRyZonkuHeoJ/d+MZ6yJRraWwUWBgTCT7nGGurjPDzC3w==
+  dependencies:
+    "@walletconnect/core" "^1.0.0-beta.33"
+    "@walletconnect/types" "^1.0.0-beta.33"
+    "@walletconnect/utils" "^1.0.0-beta.33"
+
+"@walletconnect/core@^1.0.0-beta.32", "@walletconnect/core@^1.0.0-beta.33":
   version "1.0.0-beta.33"
   resolved "https://registry.yarnpkg.com/@walletconnect/core/-/core-1.0.0-beta.33.tgz#ba8c4d1682c00630124cfacd8c3ac28a37737ffc"
   integrity sha512-VnipTAEiVJx0fKR7kVKQ/KIaEDCFjIEF4wGSl73uuhp+YPBZSN0fXQ0/joF00dGUxVY6RiwmCQlmz5ZKpcGWYw==
