@@ -3,11 +3,12 @@ import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 import { Query } from './Query';
-import { BitcoinBalanceResult
-    , BitcoinBroadcastResult
-    , BitcoinTransactionDetail
-    , BitcoinUnspentResult
-    , BitcoinFeePriority
+import {
+    BitcoinBalanceResult,
+    BitcoinBroadcastResult,
+    BitcoinTransactionDetail,
+    BitcoinUnspentResult,
+    BitcoinFeePriority,
 } from './models';
 import { BitcoinEstimateFee } from './models/BitcoinEstimateFee';
 import { BitcoinChainInfo } from './models/BitcoinChainInfo';
@@ -39,7 +40,7 @@ export class BitcoinRPC {
     async listUnspent(xpub: string): Promise<BitcoinUnspentResult[]> {
         const url = this.query().listUnspent(xpub);
         const response = await axios.get(url);
-        return plainToClass(BitcoinUnspentResult, (response.data as []));
+        return plainToClass(BitcoinUnspentResult, response.data as []);
     }
 
     async listTransactions(address: string): Promise<string[]> {
