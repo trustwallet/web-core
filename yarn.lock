@@ -2080,6 +2080,13 @@
     "@svgr/plugin-svgo" "^4.0.3"
     loader-utils "^1.1.0"
 
+"@trustwallet/types@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@trustwallet/types/-/types-0.0.16.tgz#ea1a5648347c8fa89447c6a813a1be01987b922b"
+  integrity sha512-3QwswKsg6HuT8cDeXVSj0CQX9++9rp1EHeN34LaFnA5FgRHVd/o5+bmO+buy6e7pIBsJ9amKiUEdPTv860XC+Q==
+  dependencies:
+    bignumber.js "^9.0.0"
+
 "@trustwallet/walletconnect@^0.0.16":
   version "0.0.16"
   resolved "https://registry.yarnpkg.com/@trustwallet/walletconnect/-/walletconnect-0.0.16.tgz#11ee2cec09bdb4ee3d30d94d68a5b3c8044bfda0"
