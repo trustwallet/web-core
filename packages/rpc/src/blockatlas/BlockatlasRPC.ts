@@ -1,6 +1,6 @@
-import rp from 'request-promise';
 import 'reflect-metadata';
-import { deserialize } from 'class-transformer';
+import axios from 'axios';
+import { plainToClass } from 'class-transformer';
 import { BlockatlasValidatorResult } from './models';
 import { Query } from './Query';
 
@@ -18,10 +18,12 @@ export class BlockatlasRPC {
     }
 
     async listTransactions(address: string): Promise<BlockatlasValidatorResult> {
-        return deserialize(BlockatlasValidatorResult, await rp(this.query().listTransactions(address)));
+        const response = await axios.get(this.query().listTransactions(address));
+        return plainToClass(BlockatlasValidatorResult, response.data);
     }
 
     async listValidators(): Promise<BlockatlasValidatorResult> {
-        return deserialize(BlockatlasValidatorResult, await rp(this.query().listValidators()));
+        const response = await axios.get(this.query().listValidators());
+        return plainToClass(BlockatlasValidatorResult, response.data);
     }
 }

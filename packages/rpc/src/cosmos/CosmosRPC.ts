@@ -1,6 +1,7 @@
-import rp from 'request-promise';
+import 'reflect-metadata';
+import axios from 'axios';
+import { plainToClass } from 'class-transformer';
 import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult } from './models';
-import { deserialize, deserializeArray } from 'class-transformer';
 import { Query } from './Query';
 import { CosmosAccountResult } from './models/CosmosAccount';
 
@@ -16,23 +17,23 @@ export class CosmosRPC {
     }
 
     async listDelegations(address: string): Promise<CosmosDelegation[]> {
-        let result = await rp(this.query().listDelegations(address));
-        return deserializeArray(CosmosDelegation, result);
+        let response = await axios.get(this.query().listDelegations(address));
+        return plainToClass(CosmosDelegation, response.data as []);
     }
 
     async getAccount(address: string): Promise<CosmosAccount> {
-        let result = await rp(this.query().getAccount(address));
-        return deserialize(CosmosAccountResult, result).value;
+        let response = await axios.get(this.query().getAccount(address));
+        return plainToClass(CosmosAccountResult, response.data).value;
     }
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
-        const request = {
-            method: 'POST',
-            uri: this.query().broadcastTransaction(),
-            body: data,
-            simple: false,
+        const url = this.query().broadcastTransaction();
+        const options = {
+            validateStatus: (status: number) => {
+                return status >= 200 && status < 500;
+            },
         };
-
-        return deserialize(CosmosBroadcastResult, await rp(request));
+        const response = await axios.post(url, data, options);
+        return plainToClass(CosmosBroadcastResult, response.data);
     }
 }
