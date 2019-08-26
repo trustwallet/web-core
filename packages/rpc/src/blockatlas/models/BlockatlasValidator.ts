@@ -1,27 +1,27 @@
 import { Type } from 'class-transformer';
-import { BlockatlasResult } from "./BlockatlasResult";
+import { BlockatlasResult } from './BlockatlasResult';
 
 class Info {
-  name: string;
-  description: string;
-  image: string;
-  website: string;
+    name: string;
+    description: string;
+    image: string;
+    website: string;
 }
 
 class Reward {
-  annual?: number;
+    annual?: number;
 }
 
 export class BlockatlasValidator {
-  id: string;
-  status: boolean;
-  @Type(() => Info)
-  info: Info;
-  @Type(() => Reward)
-  reward: Reward;
+    id: string;
+    status: boolean;
+    @Type(() => Info)
+    info: Info;
+    @Type(() => Reward)
+    reward: Reward;
 }
 
 export class BlockatlasValidatorResult extends BlockatlasResult {
-  @Type(() => BlockatlasValidator)
-  docs: BlockatlasValidator[];
+    @Type(() => BlockatlasValidator)
+    docs: BlockatlasValidator[];
 }

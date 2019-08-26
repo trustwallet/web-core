@@ -1,4 +1,4 @@
 export abstract class BlockatlasResult {
-  total?: number;
-  status?: boolean;
+    total?: number;
+    status?: boolean;
 }
