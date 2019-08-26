@@ -8,7 +8,8 @@
     "test": "test"
   },
   "files": [
-    "src/index.d.ts"
+    "lib",
+    "src"
   ],
   "scripts": {
     "clean": "shx rm -rf lib",
@@ -58,11 +59,10 @@
   "dependencies": {
     "@types/node": "^12.7.1",
     "@types/request-promise": "^4.1.44",
+    "axios": "^0.19.0",
     "bignumber.js": "^9.0.0",
     "class-transformer": "^0.2.3",
-    "reflect-metadata": "^0.1.13",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "reflect-metadata": "^0.1.13"
   },
   "resolutions": {
     "jest": "^24.0.0"

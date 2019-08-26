@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'lib'),
         filename: '[name].js',
         libraryTarget: 'umd',
-        library: 'BitcoinRPC',
+        library: 'TrustRPC',
         umdNamedDefine: true,
         globalObject: 'this'
     },
@@ -20,12 +20,7 @@ module.exports = {
     optimization: {
         minimize: true
     },
-    target: 'node',
     module: {
-        rules: [{
-            test: /\.tsx?$/,
-            loader: 'ts-loader',
-            options: { allowTsInNodeModules: true }
-        }]
+        rules: [{ test: /\.tsx?$/, loader: 'ts-loader' }]
     }
-}
+};
