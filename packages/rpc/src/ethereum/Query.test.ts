@@ -6,7 +6,7 @@ describe('BitcoinQuery', () => {
 
     it('should return a correct path', async () => {
         expect(query.getLatestBlock()).toBe(baseUrl + '/v2/');
-        expect(query.getBalance('xpub123')).toContain('/v2/xpub/');
+        expect(query.getBalance('xpub123')).toContain('/v2/address/');
         expect(query.getTransactionDetail('tx123')).toContain('/v2/tx/');
         expect(query.broadcastTransaction()).toBe(baseUrl + '/v2/sendtx/');
         expect(query.getBlock(100)).toContain(baseUrl + '/v2/block/');
