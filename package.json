@@ -31,5 +31,8 @@
   ],
   "resolutions": {
     "jest": "^24.0.0"
+  },
+  "dependencies": {
+    "ejs": "^2.6.2"
   }
 }
