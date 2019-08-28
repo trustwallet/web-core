@@ -17,7 +17,6 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
-    "codegen": "codegen",
     "build": "tsc -b",
     "clean": "shx rm -rf lib node_modules tsconfig.tsbuildinfo"
   },

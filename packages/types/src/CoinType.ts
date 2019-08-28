@@ -56,8 +56,9 @@ export enum CoinType {
     monacoin = 22,
     fio = 235,
 }
+
 export namespace CoinType {
-    export function decimals(coin: CoinType) {
+    export function decimals(coin: CoinType): number {
         switch (coin) {
             case CoinType.nebulas:
                 return 18;
@@ -173,7 +174,7 @@ export namespace CoinType {
                 return 9;
         }
     }
-    export function name(coin: CoinType) {
+    export function name(coin: CoinType): string {
         switch (coin) {
             case CoinType.nebulas:
                 return 'Nebulas';
@@ -289,7 +290,7 @@ export namespace CoinType {
                 return 'FIO';
         }
     }
-    export function blockchain(coin: CoinType) {
+    export function blockchain(coin: CoinType): string {
         switch (coin) {
             case CoinType.nebulas:
                 return 'Nebulas';
@@ -405,7 +406,7 @@ export namespace CoinType {
                 return 'EOS';
         }
     }
-    export function derivationPath(coin: CoinType) {
+    export function derivationPath(coin: CoinType): string {
         switch (coin) {
             case CoinType.nebulas:
                 return "m/44'/2718'/0'/0/0";
@@ -521,7 +522,7 @@ export namespace CoinType {
                 return "m/44'/235'/0'/0/0";
         }
     }
-    export function symbol(coin: CoinType) {
+    export function symbol(coin: CoinType): string {
         switch (coin) {
             case CoinType.nebulas:
                 return 'NAS';
