@@ -1,6 +1,6 @@
 import { EthereumRPC } from './EthereumRPC';
 
-describe('bitcoinRPC', () => {
+describe('EthereumRPC', () => {
     let rpc: EthereumRPC;
     let address1: string;
     let address2: string;
