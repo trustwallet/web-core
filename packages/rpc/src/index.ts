@@ -5,3 +5,5 @@ export { CosmosRPC } from './cosmos/CosmosRPC';
 export * from './cosmos/models';
 export { BlockatlasRPC } from './blockatlas/BlockatlasRPC';
 export * from './blockatlas/models';
+export { EthereumRPC } from './ethereum/EthereumRPC';
+export * from './ethereum/models';
