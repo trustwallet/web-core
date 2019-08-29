@@ -15,7 +15,7 @@
     "check-prettier": "prettier --parser typescript --single-quote --list-different 'packages/**/*.{ts,tsx}'",
     "lint": "wsrun --exclude-missing --parallel --fast-exit lint $PKG",
     "test": "wsrun --exclude-missing --stages --fast-exit test $PKG ",
-    "ci": "yarn build && yarn check-prettier && yarn lint && yarn test"
+    "ci": "yarn build && yarn lint && yarn test"
   },
   "devDependencies": {
     "@types/jest": "^24.0.0",
