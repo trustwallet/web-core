@@ -7,7 +7,7 @@ describe('bitcoinRPC', () => {
     let tx: string;
 
     beforeAll(() => {
-        rpc = new EthereumRPC('https://ethereum-rpc.trustwalletapp.com');
+        rpc = new EthereumRPC(process.env.GETH_RPC_URL as string);
         address1 = '0xc94770007dda54cF92009BFF0dE90c06F603a09f';
         address2 = '0x530d2A8BA8D71E359AdBD4Dc68E289d6f91c4283';
         tx = '0x36fa29b6bb88731d2abf97a820708833e96a05474766d079bdec49a88b44a607';

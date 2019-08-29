@@ -22,4 +22,5 @@ module.exports = {
         "json",
         "d.ts"
     ],
+    "testRegex": "/.*.test.(js|ts|tsx)?$"
 };
