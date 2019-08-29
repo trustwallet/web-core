@@ -1,15 +1,8 @@
 import 'reflect-metadata';
-import axios from 'axios';
-import { plainToClass } from 'class-transformer';
 import BigNumber from 'bignumber.js';
-import { Query } from './Query';
-import { EthereumChainInfo } from './models/EthereumChainInfo';
-import { EthereumBroadcastResult } from './models/EthereumBroadcastResult';
-import { EthereumAddressInfo } from './models/EthereumAddressInfo';
-import { EthereumTransactionDetail } from './models/EthereumTransactionDetail';
-import { EthereumBlock } from './models/EthereumBlock';
-import { EthereumAssesBalances } from './models/EthereumAssesBalances';
-import { ETHEREUM_GAS_TRANSACTION, ETHEREUM_GAS_TXDATANONZERO } from './consts';
+import { QueryBuilder } from './Query';
+import { EthereumAssesBalances, EthereumTransactionDetail } from './models';
+import { plainToClass } from 'class-transformer';
 
 export class EthereumRPC {
     rpcUrl: string;
@@ -18,45 +11,43 @@ export class EthereumRPC {
         this.rpcUrl = rpcUrl;
     }
 
-    private query(): Query {
-        return new Query(this.rpcUrl);
+    private query(): QueryBuilder {
+        return new QueryBuilder(this.rpcUrl);
     }
 
     async getBlockHeight(): Promise<BigNumber> {
-        const url = this.query().getLatestBlock();
-        const response = await axios.get(url);
-        return plainToClass(EthereumChainInfo, response.data).backend.blocks;
+        const response = await this.query()
+            .scheduleGetLatestBlock()
+            .execute();
+        return new BigNumber(response.result);
     }
 
     async getAccountBalance(asset: string): Promise<BigNumber> {
-        const url = this.query().getBalance(asset);
-        const response = await axios.get(url);
-        return plainToClass(EthereumAddressInfo, response.data).balance;
+        const response = await this.query()
+            .scheduleGetBalance(asset)
+            .execute();
+        return new BigNumber(response.result);
     }
 
     async getTransactionDetail(hash: string): Promise<EthereumTransactionDetail> {
-        const url = this.query().getTransactionDetail(hash);
-        const response = await axios.get(url);
-        return plainToClass(EthereumTransactionDetail, response.data);
+        const response = await this.query()
+            .scheduleGetTransactionDetail(hash)
+            .execute();
+        return plainToClass(EthereumTransactionDetail, response.result);
     }
 
     async estimateNonce(address: string): Promise<BigNumber> {
-        const url = this.query().addressInfo(address);
-        const addressRawData = await axios.get(url);
-        const addrInfo = plainToClass(EthereumAddressInfo, addressRawData.data);
-        if (!addrInfo.txids || addrInfo.txids.length === 0) {
-            return new BigNumber(0);
-        }
-        const txInfo = await this.getTransactionDetail(addrInfo.txids[0]);
-        return new BigNumber(txInfo.ethereumSpecific.nonce);
+        const response = await this.query()
+            .scheduleEstimateNonce(address)
+            .execute();
+        return new BigNumber(response.result);
     }
 
     async getGasPrice(): Promise<BigNumber> {
-        const blockUrl = this.query().getBlock((await this.getBlockHeight()).toNumber());
-        const blockRaw = await axios.get(blockUrl);
-        const block = plainToClass(EthereumBlock, blockRaw.data);
-        const tx = await this.getTransactionDetail(block.txs[0].txid);
-        return tx.ethereumSpecific.gasPrice;
+        const response = await this.query()
+            .scheduleEstimateGasPrice()
+            .execute();
+        return new BigNumber(response.result);
     }
 
     async getAllTokenBalances(assets: string[]): Promise<EthereumAssesBalances> {
@@ -67,25 +58,23 @@ export class EthereumRPC {
         }, {});
     }
 
-    estimateGasLimit(payloadData: string): number {
-        return ETHEREUM_GAS_TRANSACTION + ETHEREUM_GAS_TXDATANONZERO * this.byteCount(payloadData);
+    async estimateGasLimit(
+        from: string,
+        to: string,
+        amount: number,
+        gasPrice: number,
+        payloadData: any,
+    ): Promise<BigNumber> {
+        const response = await this.query()
+            .scheduleEstimateGasLimit(from, to, amount, gasPrice, payloadData)
+            .execute();
+        return new BigNumber(response.result);
     }
 
-    async broadcastTransaction(data: string): Promise<EthereumBroadcastResult> {
-        const url = this.query().broadcastTransaction();
-        const options = {
-            headers: {
-                'content-type': 'text/plain; charset=utf-8',
-            },
-            validateStatus: (status: number) => {
-                return status >= 200 && status < 500;
-            },
-        };
-        const response = await axios.post(url, data, options);
-        return plainToClass(EthereumBroadcastResult, response.data);
-    }
-
-    private byteCount(s: string): number {
-        return encodeURI(s).split(/%..|./).length - 1;
+    async broadcastTransaction(data: string): Promise<string> {
+        const response = await this.query()
+            .scheduleBroadcastTransaction(data)
+            .execute();
+        return response.result;
     }
 }
