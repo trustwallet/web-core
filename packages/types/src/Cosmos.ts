@@ -1,4 +1,4 @@
-import { Account } from '@trustwallet/types';
+import {Account} from './Account';
 import BigNumber from 'bignumber.js';
 
 export const GAS_LIMIT = '200000';
