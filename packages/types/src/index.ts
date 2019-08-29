@@ -1,6 +1,5 @@
-declare module '@trustwallet/types' {
-    export interface Account {
-        network: number;
-        address: string;
-    }
-}
+// created from 'create-ts-index'
+
+export * from './Account';
+export * from './CoinType';
+export * from './Cosmos';
