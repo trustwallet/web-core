@@ -2,7 +2,7 @@ import { QueryBuilder } from './Query';
 import axios from 'axios';
 import { getEnv } from '../utils';
 
-describe('BitcoinQuery', () => {
+describe('EthereumRPC', () => {
     let query: QueryBuilder;
 
     beforeEach(function() {

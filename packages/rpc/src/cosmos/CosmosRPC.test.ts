@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getEnv } from '../utils';
 import { CosmosRPC } from './CosmosRPC';
 
-describe('BitcoinQuery', () => {
+describe('CosmosRPC', () => {
     let rpc: CosmosRPC;
     const address = 'cosmos1lcgtmf3gkdq4cuelly6554znqqhsl6eqy4r3f5';
     const delegationAddress = 'cosmos1vjrx0lks65yefnsz4xk92vugda2z25esym5ypp';
