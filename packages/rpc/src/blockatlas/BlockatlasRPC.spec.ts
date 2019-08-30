@@ -1,9 +1,11 @@
 import { BlockatlasRPC } from './BlockatlasRPC';
+import { getEnv } from '../utils';
 
 describe('blockatlas', () => {
     let rpc: BlockatlasRPC;
     beforeAll(() => {
-        rpc = new BlockatlasRPC('http://blockatlas.trustwalletapp.com', 'cosmos');
+        require('dotenv').config({ path: __dirname + '/./.env' });
+        rpc = new BlockatlasRPC(getEnv('BLOCKATLAS_RPC_URL'), 'cosmos');
     });
 
     it('should list validators', async () => {

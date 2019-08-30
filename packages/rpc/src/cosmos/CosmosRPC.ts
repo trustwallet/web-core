@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult } from './models';

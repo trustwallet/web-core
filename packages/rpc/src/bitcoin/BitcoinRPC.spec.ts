@@ -1,5 +1,6 @@
 import { BitcoinRPC } from './BitcoinRPC';
 import { BitcoinFeePriority } from './models/BitcoinFeePriority';
+import { getEnv } from '../utils';
 
 describe('bitcoinRPC', () => {
     let rpc: BitcoinRPC;
@@ -8,7 +9,8 @@ describe('bitcoinRPC', () => {
     let tx: string;
 
     beforeAll(() => {
-        rpc = new BitcoinRPC('https://btc1.trezor.io/api');
+        require('dotenv').config({ path: __dirname + '/./.env' });
+        rpc = new BitcoinRPC(getEnv('BTC_RPC_URL'));
         xpub =
             'xpub6CUGRUonZSQ4TWtTMmzXdrXDtypWKiKrhko4egpiMZbpiaQL2jkwSB1icqYh2cfDfVxdx4df189oLKnC5fSwqPfgyP3hooxujYzAu3fDVmz';
         address = '1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX';
