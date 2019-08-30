@@ -18,7 +18,7 @@
   "scripts": {
     "create-index": "cti src",
     "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
-    "build": "npm run create-index && tsc -b",
+    "build": "yarn create-index && yarn tsc -b",
     "clean": "shx rm -rf lib node_modules tsconfig.tsbuildinfo"
   },
   "publishConfig": {
