@@ -1,6 +1,6 @@
 import { CoinType } from '@trustwallet/types/lib/CoinType';
 
-export default class Utils {
+export default class TrustUtils {
     static coinToAddress(coin: CoinType) {
         const padding = 40;
         let s = String(Number(coin).toString(16));

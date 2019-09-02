@@ -64,7 +64,8 @@
     "bignumber.js": "^9.0.0",
     "class-transformer": "^0.2.3",
     "reflect-metadata": "^0.1.13",
-    "@trustwallet/trust": "0.1.0"
+    "@trustwallet/trust-api": "0.1.0",
+    "@trustwallet/types": "^0.1.5"
   },
   "resolutions": {
     "jest": "^24.0.0"
