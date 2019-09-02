@@ -1,5 +1,5 @@
 {
-  "name": "@trustwallet/trust-api",
+  "name": "@trustwallet/api",
   "version": "0.1.0",
   "description": "Trust package repository",
   "main": "lib/index.js",

@@ -1,1 +1,1 @@
-declare module '@trustwallet/trust-api';
+declare module '@trustwallet/api';

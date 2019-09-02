@@ -4,18 +4,18 @@ import { plainToClass } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 import { Query } from './Query';
 import { CoinType } from '@trustwallet/types/lib/CoinType';
-import Utils from '@trustwallet/trust-api';
+import Utils from '@trustwallet/api';
 import { PriceResponse } from './models/PriceInfo';
 
-export class TrustRPC {
-    rpcUrl: string;
+export class TrustClient {
+    url: string;
 
-    constructor(rpcUrl: string) {
-        this.rpcUrl = rpcUrl;
+    constructor(url: string) {
+        this.url = url;
     }
 
     private query(): Query {
-        return new Query(this.rpcUrl);
+        return new Query(this.url);
     }
 
     async getPrices(coinType: CoinType, currency: string): Promise<BigNumber> {

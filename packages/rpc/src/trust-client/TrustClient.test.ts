@@ -1,16 +1,16 @@
 import axios from 'axios';
-import { TrustRPC } from './TrustRPC';
+import { TrustClient } from './TrustClient';
 import { CoinType } from '@trustwallet/types/lib/CoinType';
 import { getEnv } from '../utils';
-import Utils from '@trustwallet/trust-api';
+import Utils from '@trustwallet/api';
 
 describe('TrustRPC', () => {
-    let rpc: TrustRPC;
+    let rpc: TrustClient;
     const coin = CoinType.cosmos;
 
     beforeAll(() => {
         require('dotenv').config({ path: __dirname + '/./.env' });
-        rpc = new TrustRPC(getEnv('TRUST_RPC_URL'));
+        rpc = new TrustClient(getEnv('TRUST_RPC_URL'));
     });
 
     beforeEach(function() {
