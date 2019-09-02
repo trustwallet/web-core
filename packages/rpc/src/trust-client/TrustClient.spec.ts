@@ -1,5 +1,5 @@
 import { TrustClient } from './TrustClient';
-import { CoinType } from '@trustwallet/types/lib/CoinType';
+import { CoinType, FiatCoinType } from '@trustwallet/types/lib/CoinType';
 import { getEnv } from '../utils';
 
 describe('TrustRPC', () => {
@@ -12,7 +12,7 @@ describe('TrustRPC', () => {
     });
 
     it('should get Cosmos price', async () => {
-        const price = await rpc.getPrices(coin, 'USD');
+        const price = await rpc.getPrices(coin, FiatCoinType.USD);
         expect(price.toNumber()).toBeGreaterThan(0);
     });
 });

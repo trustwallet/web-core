@@ -3,7 +3,7 @@ import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 import { Query } from './Query';
-import { CoinType } from '@trustwallet/types/lib/CoinType';
+import { CoinType, FiatCoinType } from '@trustwallet/types/lib/CoinType';
 import Utils from '@trustwallet/api';
 import { PriceResponse } from './models/PriceInfo';
 
@@ -18,7 +18,7 @@ export class TrustClient {
         return new Query(this.url);
     }
 
-    async getPrices(coinType: CoinType, currency: string): Promise<BigNumber> {
+    async getPrices(coinType: CoinType, currency: FiatCoinType): Promise<BigNumber> {
         const url = this.query().getPrices();
         const addr = Utils.coinToAddress(coinType);
         const body = {
