@@ -1,13 +1,13 @@
 export class Query {
-    rpcUrl: string;
+    url: string;
 
-    constructor(rpcUrl: string) {
-        this.rpcUrl = rpcUrl;
+    constructor(url: string) {
+        this.url = url;
     }
 
     getPrices = () => this.uri(`prices`);
 
     private uri(path: string): string {
-        return `${this.rpcUrl}/${path}`;
+        return `${this.url}/${path}`;
     }
 }

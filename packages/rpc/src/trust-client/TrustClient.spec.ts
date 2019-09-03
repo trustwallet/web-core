@@ -1,18 +1,19 @@
 import { TrustClient } from './TrustClient';
-import { CoinType, FiatCoinType } from '@trustwallet/types/lib/CoinType';
+import { CoinType } from '@trustwallet/types/lib/CoinType';
+import { FiatCoinType } from '@trustwallet/types/lib/FiatCoinType';
 import { getEnv } from '../utils';
 
 describe('TrustRPC', () => {
-    let rpc: TrustClient;
+    let client: TrustClient;
     const coin = CoinType.cosmos;
 
     beforeAll(() => {
         require('dotenv').config({ path: __dirname + '/./.env' });
-        rpc = new TrustClient(getEnv('TRUST_RPC_URL'));
+        client = new TrustClient(getEnv('TRUST_URL'));
     });
 
     it('should get Cosmos price', async () => {
-        const price = await rpc.getPrices(coin, FiatCoinType.USD);
+        const price = await client.getPrices(coin, FiatCoinType.USD);
         expect(price.toNumber()).toBeGreaterThan(0);
     });
 });

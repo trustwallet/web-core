@@ -1,7 +1,3 @@
-export enum FiatCoinType {
-    USD = 'USD',
-}
-
 export enum CoinType {
     nebulas = 2718,
     ethereum = 60,

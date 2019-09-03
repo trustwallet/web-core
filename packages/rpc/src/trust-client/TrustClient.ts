@@ -3,7 +3,8 @@ import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 import { Query } from './Query';
-import { CoinType, FiatCoinType } from '@trustwallet/types/lib/CoinType';
+import { CoinType } from '@trustwallet/types/lib/CoinType';
+import { FiatCoinType } from '@trustwallet/types/lib/FiatCoinType';
 import Utils from '@trustwallet/api';
 import { PriceResponse } from './models/PriceInfo';
 
@@ -33,7 +34,7 @@ export class TrustClient {
         const respRaw = await axios.post(url, body);
         const resp = plainToClass(PriceResponse, respRaw.data);
         const coins = resp.docs;
-        const cosmos = coins.find(coin => coin.contract === addr);
-        return cosmos ? cosmos.price : null;
+        const result = coins.find(coin => coin.contract === addr);
+        return result ? result.price : null;
     }
 }
