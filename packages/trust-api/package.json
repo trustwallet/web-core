@@ -1,7 +1,7 @@
 {
-  "name": "@trustwallet/rpc",
-  "version": "0.1.5",
-  "description": "RPC service repository",
+  "name": "@trustwallet/api",
+  "version": "0.1.0",
+  "description": "Trust package repository",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",
@@ -15,6 +15,7 @@
     "clean": "shx rm -rf lib",
     "build": "webpack",
     "test": "yarn jest --config ../../jest.config.js --colors",
+    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
   },
   "repository": {
     "type": "git",
@@ -45,8 +46,12 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "dotenv": "^8.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^24.0.0",
+    "prettier": "^1.18.2",
     "shx": "^0.3.2",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
@@ -59,7 +64,6 @@
     "bignumber.js": "^9.0.0",
     "class-transformer": "^0.2.3",
     "reflect-metadata": "^0.1.13",
-    "@trustwallet/api": "0.1.0",
     "@trustwallet/types": "^0.1.5"
   },
   "resolutions": {
