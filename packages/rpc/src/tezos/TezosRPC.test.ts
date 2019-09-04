@@ -7,7 +7,7 @@ describe('TezosRPC', () => {
     let query: Query;
     let rpc: TezosRPC;
 
-    const testUrl = 'https://mainnet-node.tzscan.io';
+    // const testUrl = 'https://mainnet-node.tzscan.io';
 
     const contractId = 'tz1Sfe7Nm2MdmkCopA7DVBUHHEd8G73TWwfN';
     const block = 'BMDcrb57AumMTixxMkpQwVkuvxn5GxjSwLUWivoFUNzL271sH8U';
@@ -15,7 +15,7 @@ describe('TezosRPC', () => {
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/./.env' });
         rpc = new TezosRPC(getEnv('TEZOS_RPC_URL'));
-        query = new Query(testUrl);
+        query = new Query(getEnv('TEZOS_RPC_URL'));
         spyOn(axios, 'get').and.returnValue({ data: '' });
         spyOn(axios, 'post').and.returnValue({ data: '' });
     });
@@ -48,7 +48,8 @@ describe('TezosRPC', () => {
     });
 
     it('Should Broadcast Transaction', async function() {
-        const data = '{ "branch": "BLnfTrJ6zwakFL6LbBzrD2tRSQuVJ2YymAnNHsYqW9FqEQLEFHT","contents": [{ "kind": "transaction","source": "tz1VFgcWrcLvxpWcMvKnzFZpLjWxNT4wuosx","fee": "1","counter": "36904","gas_limit": "800000","storage_limit": "60000","amount": "1","destination": "tz1hBT7dx9aaiZTEsSJUnB8fKQ76EswyTLgZ" }],"signature":    "edsigtXomBKi5CTRf5cjATJWSyaRvhfYNHqSUGrn4SdbYRcGwQrUGjzEfQDTuqHhuA8b2d8NarZjz8TRf65WkpQmo423BtomS8Q"}';
+        const data =
+            '{ "branch": "BLnfTrJ6zwakFL6LbBzrD2tRSQuVJ2YymAnNHsYqW9FqEQLEFHT","contents": [{ "kind": "transaction","source": "tz1VFgcWrcLvxpWcMvKnzFZpLjWxNT4wuosx","fee": "1","counter": "36904","gas_limit": "800000","storage_limit": "60000","amount": "1","destination": "tz1hBT7dx9aaiZTEsSJUnB8fKQ76EswyTLgZ" }],"signature":    "edsigtXomBKi5CTRf5cjATJWSyaRvhfYNHqSUGrn4SdbYRcGwQrUGjzEfQDTuqHhuA8b2d8NarZjz8TRf65WkpQmo423BtomS8Q"}';
         await rpc.broadcastTransaction(data);
         expect(axios.post).toHaveBeenCalled();
     });
