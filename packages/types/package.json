@@ -17,7 +17,6 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "create-index": "cti src",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
     "build": "yarn create-index && yarn tsc -b",
     "clean": "shx rm -rf lib node_modules tsconfig.tsbuildinfo"
   },
@@ -29,10 +28,6 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "create-ts-index": "^1.10.2",
-    "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "shx": "^0.3.2"
