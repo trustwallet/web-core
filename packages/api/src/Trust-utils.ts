@@ -1,4 +1,4 @@
-import { CoinType } from '@trustwallet/types/lib/CoinType';
+import { CoinType } from '@trustwallet/types';
 
 export default class TrustUtils {
     static coinToAddress(coin: CoinType) {

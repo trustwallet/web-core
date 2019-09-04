@@ -16,8 +16,7 @@
   "scripts": {
     "clean": "shx rm -rf lib",
     "build": "webpack",
-    "test": "yarn jest --config ../../jest.config.js --colors",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
+    "test": "yarn jest --config ../../jest.config.js --colors"
   },
   "main": "lib/index.js",
   "directories": {
