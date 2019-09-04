@@ -29,7 +29,12 @@ const generateCoinType = async (coins) => {
             body: (coin) => `return ${coin.decimals}`
         },
         {
-            name: 'name',
+            name: 'id',
+            returnType: 'string',
+            body: (coin) => `return '${coin.id}'`
+        },
+        {
+            name: 'networkName',
             returnType: 'string',
             body: (coin) => `return '${coin.name}'`
         },

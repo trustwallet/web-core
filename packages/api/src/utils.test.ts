@@ -1,5 +1,5 @@
 import { CoinType } from '@trustwallet/types/lib/CoinType';
-import Utils from './Trust-utils';
+import { Utils } from './utils';
 
 describe('TrustUtils', () => {
     it('should format address based in coin id', () => {

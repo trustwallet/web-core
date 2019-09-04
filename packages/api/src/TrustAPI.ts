@@ -3,12 +3,11 @@ import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 import { Query } from './Query';
-import { CoinType } from '@trustwallet/types/lib/CoinType';
-import { FiatCoinType } from '@trustwallet/types/lib/FiatCoinType';
-import Utils from '@trustwallet/api';
-import { PriceResponse } from './models/PriceInfo';
+import { CoinType, FiatCoinType } from '@trustwallet/types';
+import { Utils } from './utils';
+import { PriceResponse } from './models';
 
-export class TrustClient {
+export class TrustAPI {
     url: string;
 
     constructor(url: string) {

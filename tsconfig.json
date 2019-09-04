@@ -34,6 +34,7 @@
     { "path": "./packages/walletconnect" },
     { "path": "./packages/provider" },
     { "path": "./packages/types" },
-    { "path": "./packages/eslint-config" }
+    { "path": "./packages/rpc" },
+    { "path": "./packages/api"}
   ]
 }
