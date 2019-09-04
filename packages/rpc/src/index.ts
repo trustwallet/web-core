@@ -7,3 +7,5 @@ export { BlockatlasRPC } from './blockatlas/BlockatlasRPC';
 export * from './blockatlas/models';
 export { EthereumRPC } from './ethereum/EthereumRPC';
 export * from './ethereum/models';
+export { IoTexRPC } from './iotex/IoTexRPC';
+export * from './iotex/models';
