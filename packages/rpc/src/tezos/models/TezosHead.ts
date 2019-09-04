@@ -6,7 +6,7 @@ export class TezosHead {
     hash: string;
 
     protocol: string;
-    @Expose({ name: "chain_id" })
+    @Expose({ name: 'chain_id' })
     chainId: string;
 
     @Type(() => TezosBlockHeader)

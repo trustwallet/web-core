@@ -4,7 +4,7 @@ import { TezosOperationResult } from './TezosOperationResult';
 
 class TezosMetadata {
     @Type(() => TezosOperationResult)
-    @Expose({ name: "operation_result" })
+    @Expose({ name: 'operation_result' })
     operationresult?: TezosOperationResult;
 }
 
