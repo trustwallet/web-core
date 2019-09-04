@@ -19,6 +19,11 @@ const main = async () => {
 const generateCoinType = async (coins) => {
     const methods = [
         {
+            name: 'id',
+            returnType: 'string',
+            body: (coin) => `return '${coin.id}'`
+        },
+        {
             name: 'decimals',
             returnType: 'number',
             body: (coin) => `return ${coin.decimals}`
