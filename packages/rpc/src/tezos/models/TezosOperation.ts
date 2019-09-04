@@ -1,10 +1,11 @@
 import 'reflect-metadata';
-import { Type } from 'class-transformer';
+import { Type, Expose } from 'class-transformer';
 import { TezosOperationResult } from './TezosOperationResult';
 
 class TezosMetadata {
     @Type(() => TezosOperationResult)
-    operation_result?: TezosOperationResult;
+    @Expose({ name: "operation_result" })
+    operationresult?: TezosOperationResult;
 }
 
 class TezosContent {
