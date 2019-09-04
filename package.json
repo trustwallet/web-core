@@ -11,6 +11,7 @@
     "build": "lerna link && wsrun --exclude-missing --stages build $PKG",
     "nuke-build": "rm -rf lib; for d in packages/*/lib; do echo $d; rm -rf $d; done",
     "nuke": "yarn nuke-build && rm -rf node_modules; for d in packages/*/node_modules; do echo $d; rm -rf $d; done",
+    "test": "wsrun --exclude-missing --stages --fast-exit test $PKG ",
     "ci": "yarn build && yarn test"
   },
   "devDependencies": {

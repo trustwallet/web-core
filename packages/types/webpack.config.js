@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'lib'),
         filename: '[name].js',
         libraryTarget: 'umd',
-        library: 'TrustAPI',
+        library: 'TrustTypes',
         umdNamedDefine: true,
         globalObject: 'this'
     },
