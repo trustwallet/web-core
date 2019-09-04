@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import { Query } from './Query';
-import { TezosHead, TezosManagerKey, TezosOperationResult, TezosOperation,  } from './models';
+import { TezosHead, TezosManagerKey, TezosOperationResult, TezosOperation } from './models';
 import { TezosAccount } from './models/TezosAccount';
 
 export class TezosRPC {
@@ -16,37 +16,25 @@ export class TezosRPC {
     }
 
     async getAccount(contractId: string): Promise<TezosAccount> {
-        let response = await axios.get(
-            this.query().getAccount(contractId)
-        );
-
-        return plainToClass(TezosAccount, response.data)
+        let response = await axios.get(this.query().getAccount(contractId));
+        return plainToClass(TezosAccount, response.data);
     }
 
     /**
      * @todo
      */
     async getHead(): Promise<TezosHead> {
-        let response = await axios.get(
-            this.query().getHead()
-        );
-
-        return plainToClass(TezosHead, response.data)
+        let response = await axios.get(this.query().getHead());
+        return plainToClass(TezosHead, response.data);
     }
 
     async getManagerKey(contractId: string): Promise<TezosManagerKey> {
-        let response = await axios.get(
-            this.query().getManagerKey(contractId)
-        );
-
-        return plainToClass(TezosManagerKey, response.data)
+        let response = await axios.get(this.query().getManagerKey(contractId));
+        return plainToClass(TezosManagerKey, response.data);
     }
 
     async getBlockOperations(block: string): Promise<TezosOperation> {
-        let response = await axios.get(
-            this.query().getBlockOperations(block)
-        );
-
+        let response = await axios.get(this.query().getBlockOperations(block));
         return plainToClass(TezosOperation, response.data);
     }
 
@@ -55,7 +43,7 @@ export class TezosRPC {
         const options = {
             validateStatus: (status: number) => {
                 return status >= 200 && status < 500;
-            }
+            },
         };
         const response = await axios.post(url, data, options);
         return plainToClass(TezosOperationResult, response.data);

@@ -1,3 +1,1 @@
-export class TezosError {
-    
-}
+export class TezosError {}

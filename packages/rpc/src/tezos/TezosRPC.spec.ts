@@ -39,7 +39,8 @@ describe('TezosRPC', () => {
 
     it('Should Broadcast Transaction', async function() {
         const data = 'a75719f568f22f279b42fa3ce595c5d4d0227cc8cf2af351a21e50d2ab71ab3208000002298c03ed7d454a101eb7022bc95f7e5f41ac78d0860303c8010080c2d72f0000e7670f32038107a59a2b9cfefae36ea21f5aa63c00eff5b0ce828237f10bab4042a891d89e951de2c5ad4a8fa72e9514ee63fec9694a772b563bcac8ae0d332d57f24eae7d4a6fad784a8436b6ba03d05bf72e4408';
+
         await rpc.broadcastTransaction(data);
         expect(axios.post).toHaveBeenCalled();
     });
-})
+});

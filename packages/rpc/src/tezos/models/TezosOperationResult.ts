@@ -3,8 +3,8 @@ import { Type } from 'class-transformer';
 import { TezosOperationError } from './TezosOperationError';
 
 export class TezosOperationResult {
-    status: string
+    status: string;
 
     @Type(() => TezosOperationError)
-    errors: TezosOperationError[]
+    errors: TezosOperationError[];
 }

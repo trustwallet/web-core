@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { getEnv } from '../utils';
-import { TezosRPC } from './TezosRPC'
+import { TezosRPC } from './TezosRPC';
 import { Query } from './Query';
 
 describe('TezosRPC', () => {
     let query: Query;
     let rpc: TezosRPC;
 
-    const testUrl: string = 'https://mainnet-node.tzscan.io';
+    const testUrl = 'https://mainnet-node.tzscan.io';
 
-    const contractId: string = 'tz1Sfe7Nm2MdmkCopA7DVBUHHEd8G73TWwfN';
-    const block: string = 'BMDcrb57AumMTixxMkpQwVkuvxn5GxjSwLUWivoFUNzL271sH8U';
+    const contractId = 'tz1Sfe7Nm2MdmkCopA7DVBUHHEd8G73TWwfN';
+    const block = 'BMDcrb57AumMTixxMkpQwVkuvxn5GxjSwLUWivoFUNzL271sH8U';
 
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/./.env' });
@@ -52,4 +52,4 @@ describe('TezosRPC', () => {
         await rpc.broadcastTransaction(data);
         expect(axios.post).toHaveBeenCalled();
     });
-})
+});

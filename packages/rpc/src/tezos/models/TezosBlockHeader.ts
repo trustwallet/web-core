@@ -4,7 +4,6 @@ import { Transform } from 'class-transformer';
 export class TezosBlockHeader {
     @Transform(value => new BigNumber(value), { toClassOnly: true })
     level: BigNumber;
-    
     proto: number;
     predecessor: string;
     timestamp: string;
