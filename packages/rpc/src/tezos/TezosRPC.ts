@@ -47,7 +47,7 @@ export class TezosRPC {
             this.query().getBlockOperations(block)
         );
 
-        return plainToClass(TezosOperation, response.data as [][]);
+        return plainToClass(TezosOperation, response.data);
     }
 
     async broadcastTransaction(data: string): Promise<TezosOperationResult> {
