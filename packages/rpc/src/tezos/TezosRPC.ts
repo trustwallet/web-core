@@ -39,7 +39,7 @@ export class TezosRPC {
     }
 
     async broadcastTransaction(data: string): Promise<TezosOperationResult> {
-        const url = this.query().broadcastTransaction(data);
+        const url = this.query().broadcastTransaction();
         const options = {
             validateStatus: (status: number) => {
                 return status >= 200 && status < 500;
