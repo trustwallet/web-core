@@ -5,8 +5,6 @@ export class Query {
         this.rpcUrl = rpcUrl;
     }
 
-    // listDelegations = (address: string) => this.uri(`staking/delegators/${address}/delegations`);
-    // account = (address: string) => this.uri(`auth/accounts/${address}`);
     head = () => this.uri('chains/main/blocks/head');
     account = (address: string) => this.uri(`chains/main/blocks/head/context/contracts/${address}`);
     manageKey = (address: string) => this.uri(`chains/main/blocks/head/context/contracts/${address}/manager_key`);
