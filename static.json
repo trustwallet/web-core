@@ -1,8 +1,4 @@
 {
   "root": "packages/example/build/",
-  "https_only": true,
-  "routes": {
-    "/**": "index.html"
-  },
-  "clean_urls": false
+  "clean_urls": true
 }
