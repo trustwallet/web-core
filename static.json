@@ -1,4 +1,4 @@
 {
-  "root": "packages/example/build",
+  "root": "packages/example/build/",
   "clean_urls": true
 }
