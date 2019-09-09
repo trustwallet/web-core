@@ -1,4 +1,4 @@
-import { CoinType } from '@trustwallet/types/lib/CoinType';
+import { CoinType } from '@trustwallet/types';
 import { Utils } from './utils';
 
 describe('TrustUtils', () => {
