@@ -32,7 +32,7 @@ describe('cosmosRPC', () => {
 
     it('should list get rewards', async () => {
         let reward = await rpc.getRewards(delegator);
-        expect(reward.toNumber()).toBeGreaterThan(0);
+        expect(reward.toNumber()).toBeGreaterThan(0.0);
     });
 
     it('should broadcast transaction', async () => {
