@@ -4,6 +4,9 @@ import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult } from './models
 import { Query } from './Query';
 import { CosmosAccountResult } from './models/CosmosAccount';
 import { CosmosUnbond } from './models/CosmosUnbond';
+import { CosmosReward } from './models/CosmosReward';
+import BigNumber from 'bignumber.js';
+import { Utils } from './utils';
 
 export class CosmosRPC {
     rpcUrl: string;
@@ -29,6 +32,16 @@ export class CosmosRPC {
     async getAccount(address: string): Promise<CosmosAccount> {
         let response = await axios.get(this.query().getAccount(address));
         return plainToClass(CosmosAccountResult, response.data).value;
+    }
+
+    async getRewards(address: string): Promise<BigNumber> {
+        let response = await axios.get(this.query().getRewards(address));
+        return Utils.toAtom(
+            plainToClass<CosmosReward, any[]>(CosmosReward, response.data).reduce(
+                (acc, reward) => acc.plus(reward.amount),
+                new BigNumber(0),
+            ),
+        );
     }
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
