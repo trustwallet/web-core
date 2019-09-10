@@ -16,7 +16,7 @@ describe('BinanceRPC', () => {
 
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/../.env' });
-        binanceRpcUrl = getEnv('BinanceRPC')
+        binanceRpcUrl = getEnv('BINANCE_RPC_URL')
         rpc = new BinanceRPC(binanceRpcUrl);
         address = "bnb1qfmufc2q30cgw82ykjlpfeyauhcf5mad6p5y8t"
         marketLimit = 10;

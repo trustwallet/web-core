@@ -24,7 +24,7 @@ export class BinanceRPC {
         return plainToClass(BinanceMarket, data);
     }
 
-    async getNodeInfo(limit?: number, offset?: number): Promise<BinanceNodeInfo> {
+    async getNodeInfo(): Promise<BinanceNodeInfo> {
         const {data} = await axios.get(this.query().getNodeInfo());
         return plainToClass(BinanceNodeInfo, data);
     }
