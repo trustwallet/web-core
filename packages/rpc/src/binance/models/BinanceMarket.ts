@@ -1,9 +1,15 @@
 import 'reflect-metadata';
+import { Expose } from 'class-transformer';
 
 export class BinanceMarket {
-    base_asset_symbol: String
-    list_price: String
-    lot_size: String
-    quote_asset_symbol: String
-    tick_size: String
+    @Expose({name: "base_asset_symbol"})
+    baseAssetSymbol: string
+    @Expose({name: "list_price"})
+    listPrice: string
+    @Expose({name: "lot_size"})
+    lotSize: string
+    @Expose({name: "quote_asset_symbol"})
+    quoteAssetSymbol: string
+    @Expose({name: "tick_size"})
+    tickSize: string
 }

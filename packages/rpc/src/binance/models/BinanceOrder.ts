@@ -2,13 +2,13 @@ import 'reflect-metadata';
 import { Type } from 'class-transformer';
 
 class Order {
-    symbol: String
-    price: String
-    quantity: String
-    cumulateQuantity: String
-    lastExecutedPrice: String
-    lastExecutedQuantity: String
-    transactionHash: String
+    symbol: string
+    price: string
+    quantity: string
+    cumulateQuantity: string
+    lastExecutedPrice: string
+    lastExecutedQuantity: string
+    transactionHash: string
     status: string
     orderId: string
     owner: string 

@@ -2,11 +2,11 @@ import 'reflect-metadata';
 import { Type } from 'class-transformer';
 
 class Transaction {
-    type: String
+    type: string
 }
 
 export class BinanceRPCTransaction {
-    hash: String
+    hash: string
     ok: boolean
     @Type(() => Transaction)
     tx: Transaction

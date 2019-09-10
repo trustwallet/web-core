@@ -6,7 +6,7 @@ describe('BinanceRPC', () => {
     
     let rpc: BinanceRPC;
     let address: string;
-    let binance_RPC_URL: string
+    let binanceRpcUrl: string
     let marketLimit: number
     let marketOffset: number
     let order: string
@@ -16,8 +16,8 @@ describe('BinanceRPC', () => {
 
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/../.env' });
-        binance_RPC_URL = getEnv('Binance_RPC_URL');
-        rpc = new BinanceRPC(binance_RPC_URL);
+        binanceRpcUrl = getEnv('BinanceRPC');
+        rpc = new BinanceRPC(binanceRpcUrl);
         marketLimit = 10;
         marketOffset = 0
         address = "bnb1qfmufc2q30cgw82ykjlpfeyauhcf5mad6p5y8t"
