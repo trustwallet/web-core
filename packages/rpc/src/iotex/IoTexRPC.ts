@@ -17,28 +17,27 @@ export class IoTexRPC {
 
     async getAccount(address: string): Promise<IoTeXAccount> {
         let response = await axios.get(this.query().getAccount(address));
-        console.log(response);
         return plainToClass(IoTeXAccount, response.data);
     }
 
 
     async getTransactionByHash(hash: string): Promise<IoTexTransaction> {
         let response = await axios.get(this.query().getTransaction(hash));
-        //todo get blkHeight by calling broadcast
-        console.log(response)
         return plainToClass(IoTexTransaction, response.data);
     }
 
 
     async broadcastTransaction(data: string): Promise<IoTexBroadcastResult> {
-        const url = this.query().broadcastTransaction();
+        const url = this.query().broadcastTransaction(data);
         const options = {
             validateStatus: (status: number) => {
                 return status >= 200 && status < 500;
             },
+            headers: {
+                'Content-Type': 'application/json'
+            }
         };
-        const response = await axios.post(url, data, options);
-        console.log(response);
+        const response = await axios.post(url, null, options);
         return plainToClass(IoTexBroadcastResult, response.data);
     }
 }
