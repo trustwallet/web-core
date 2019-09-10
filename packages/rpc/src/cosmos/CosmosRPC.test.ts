@@ -6,6 +6,7 @@ describe('CosmosRPC', () => {
     let rpc: CosmosRPC;
     const address = 'cosmos1lcgtmf3gkdq4cuelly6554znqqhsl6eqy4r3f5';
     const delegationAddress = 'cosmos1vjrx0lks65yefnsz4xk92vugda2z25esym5ypp';
+    const delegator = 'cosmos1xcn6f52mall95cw798qgftsvxvqrrdj535t8pm';
 
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/./.env' });
@@ -22,8 +23,14 @@ describe('CosmosRPC', () => {
 
     it('should list delegations', async () => {
         await rpc.listDelegations(delegationAddress);
-        const addToBeCalled = `${getEnv('COSMOS_RPC_URL')}/staking/delegators/${delegationAddress}/delegations`;
-        expect(axios.get).toHaveBeenCalledWith(addToBeCalled);
+        const toBeCalled = `${getEnv('COSMOS_RPC_URL')}/staking/delegators/${delegationAddress}/delegations`;
+        expect(axios.get).toHaveBeenCalledWith(toBeCalled);
+    });
+
+    it('should list unbonding delegations', async () => {
+        await rpc.listUnbondDelegations(delegator);
+        const toBeCalled = `${getEnv('COSMOS_RPC_URL')}/staking/delegators/${delegator}/unbonding_delegations`;
+        expect(axios.get).toHaveBeenCalledWith(toBeCalled);
     });
 
     it('should broadcast transaction', async () => {

@@ -5,12 +5,14 @@ describe('cosmosRPC', () => {
     let rpc: CosmosRPC;
     let address: string;
     let delegationAddress: string;
+    let delegator: string;
 
     beforeAll(() => {
         require('dotenv').config({ path: __dirname + '/./.env' });
         rpc = new CosmosRPC(getEnv('COSMOS_RPC_URL'));
         address = 'cosmos1lcgtmf3gkdq4cuelly6554znqqhsl6eqy4r3f5';
         delegationAddress = 'cosmos1vjrx0lks65yefnsz4xk92vugda2z25esym5ypp';
+        delegator = 'cosmos1xcn6f52mall95cw798qgftsvxvqrrdj535t8pm';
     });
 
     it('should get account', async () => {
@@ -20,6 +22,11 @@ describe('cosmosRPC', () => {
 
     it('should list delegations', async () => {
         let delegations = await rpc.listDelegations(delegationAddress);
+        expect(delegations.length).toBeTruthy();
+    });
+
+    it('should list unbonding delegations', async () => {
+        let delegations = await rpc.listUnbondDelegations(delegator);
         expect(delegations.length).toBeTruthy();
     });
 

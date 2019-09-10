@@ -3,6 +3,7 @@ import { plainToClass } from 'class-transformer';
 import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult } from './models';
 import { Query } from './Query';
 import { CosmosAccountResult } from './models/CosmosAccount';
+import { CosmosUnbond } from './models/CosmosUnbond';
 
 export class CosmosRPC {
     rpcUrl: string;
@@ -17,7 +18,12 @@ export class CosmosRPC {
 
     async listDelegations(address: string): Promise<CosmosDelegation[]> {
         let response = await axios.get(this.query().listDelegations(address));
-        return plainToClass(CosmosDelegation, response.data as []);
+        return plainToClass<CosmosDelegation, any[]>(CosmosDelegation, response.data);
+    }
+
+    async listUnbondDelegations(address: string): Promise<CosmosUnbond[]> {
+        let response = await axios.get(this.query().listUnbondDelegations(address));
+        return plainToClass<CosmosUnbond, any[]>(CosmosUnbond, response.data);
     }
 
     async getAccount(address: string): Promise<CosmosAccount> {
