@@ -8,7 +8,7 @@ describe('BinanceRPC', () => {
     let address: string
     let marketLimit: number
     let marketOffset: number
-    let binance_RPC_URL: string
+    let binanceRpcUrl: string
     let order: string
     let symbol: string
     let transactionHash: string
@@ -16,8 +16,8 @@ describe('BinanceRPC', () => {
 
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/../.env' });
-        binance_RPC_URL = getEnv('Binance_RPC_URL')
-        rpc = new BinanceRPC(binance_RPC_URL);
+        binanceRpcUrl = getEnv('BinanceRPC')
+        rpc = new BinanceRPC(binanceRpcUrl);
         address = "bnb1qfmufc2q30cgw82ykjlpfeyauhcf5mad6p5y8t"
         marketLimit = 10;
         marketOffset = 0
@@ -31,31 +31,31 @@ describe('BinanceRPC', () => {
 
     it('Should get Account', async function() {
         await rpc.getAccount(address);
-        const expectedUrl = `${binance_RPC_URL}/v1/account/${address}`
+        const expectedUrl = `${binanceRpcUrl}/v1/account/${address}`
         expect(axios.get).toHaveBeenCalledWith(expectedUrl);
     });
 
     it('Should get Market', async function() {
         await rpc.getMarket(marketLimit,marketOffset);
-        const expectedUrl = `${binance_RPC_URL}/v1/markets?limit=${marketLimit}&offset=${marketOffset}`
+        const expectedUrl = `${binanceRpcUrl}/v1/markets?limit=${marketLimit}&offset=${marketOffset}`
         expect(axios.get).toHaveBeenCalledWith(expectedUrl);
     });
 
     it('Should get Node Info', async function() {
         await rpc.getNodeInfo();
-        const expectedUrl = `${binance_RPC_URL}/v1/node-info`
+        const expectedUrl = `${binanceRpcUrl}/v1/node-info`
         expect(axios.get).toHaveBeenCalledWith(expectedUrl);
     });
 
     it('Should get Order Info', async function() {
         await rpc.getOrder(order,address, symbol);
-        const expectedUrl = `${binance_RPC_URL}/v1/orders/${order}?address=${address}&symbol=${symbol}`;
+        const expectedUrl = `${binanceRpcUrl}/v1/orders/${order}?address=${address}&symbol=${symbol}`;
         expect(axios.get).toHaveBeenCalledWith(expectedUrl);
     });
 
     it('Should get Transaction Info', async function() {
         await rpc.getTransaction(transactionHash);
-        const expectedUrl = `${binance_RPC_URL}/v1/tx/${transactionHash}?format=json`;
+        const expectedUrl = `${binanceRpcUrl}/v1/tx/${transactionHash}?format=json`;
         expect(axios.get).toHaveBeenCalledWith(expectedUrl);
     });
 

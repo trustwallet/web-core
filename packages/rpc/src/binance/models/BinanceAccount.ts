@@ -1,18 +1,19 @@
 import 'reflect-metadata';
-import { Type, Transform } from 'class-transformer';
+import { Type, Transform, Expose } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 
 class BinanceTokenBalance {
-    symbol: String
-    free: String
-    locked: String
-    frozen: String
+    symbol: string
+    free: string
+    locked: string
+    frozen: string
 }
 
 export class BinanceAccount {
-    address: String
+    address: string
     @Transform(value => new BigNumber(value), { toClassOnly: true })
-    account_number: BigNumber
+    @Expose({name: "account_number"})
+    accountNumber: BigNumber
     @Transform(value => new BigNumber(value), { toClassOnly: true })
     sequence: BigNumber
     @Type(() => BinanceTokenBalance)

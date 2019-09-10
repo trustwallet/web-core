@@ -1,45 +1,44 @@
 import 'reflect-metadata';
-import { Type, Transform } from 'class-transformer';
+import { Type, Transform, Expose } from 'class-transformer';
 import BigNumber from 'bignumber.js';
  
 class NodeInfo {
-    network: String
-    listen_addr: String
+    network: string
+    @Expose({name: "listen_addr"})
+    listenAddr: string
     version: string
     channels: string
 }
 
 class SyncInfo {
     @Transform(value => new BigNumber(value), { toClassOnly: true })
-    latest_block_hash: BigNumber
-    latest_app_hash: string
+    @Expose({name: "latest_block_hash"})
+    latestBlockHash: BigNumber
+    @Expose({name: "latest_app_hash"})
+    latestAppHash: string
 }
 
 class ValidatorInfo {
     address: string
+    @Expose({name: "voting_power"})
     @Transform(value => new BigNumber(value), { toClassOnly: true })
-    voting_power: BigNumber
-    pub_key: number[]
-
-}
-
-class ProtocolVersion {
-    ProtocolVersion: number
-    app: number
-    block: number
+    votingPower: BigNumber
+    @Expose({name: "pub_key"})
+    pubKey: number[]
 }
 
 export class BinanceNodeInfo {
+    @Expose({name: "node_info"})
     @Type(() => NodeInfo)
-    node_info: NodeInfo
+    nodeInfo: NodeInfo
+    @Expose({name: "sync_info"})
     @Type(() => SyncInfo)
-    sync_info: SyncInfo
+    syncInfo: SyncInfo
+    @Expose({name: "validator_info"})
     @Type(() => ValidatorInfo)
-    validator_info : ValidatorInfo
-    @Type(() => ProtocolVersion)
-    protocol_version: ProtocolVersion
+    validatorInfo : ValidatorInfo
 
-    chainID(): String {
-        return this.node_info.network
+    chainID(): string {
+        return this.nodeInfo.network
     }
 }
