@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/provider",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Trust provider wrapper",
   "author": "TrsutWallet",
   "license": "ISC",
@@ -16,8 +16,7 @@
   "scripts": {
     "clean": "shx rm -rf lib",
     "build": "webpack",
-    "test": "yarn jest --config ../../jest.config.js --colors",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
+    "test": "yarn jest --config ../../jest.config.js --colors"
   },
   "main": "lib/index.js",
   "directories": {
@@ -37,13 +36,7 @@
     "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0",
     "@types/jest": "^24.0.0",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
-    "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.0.0",
-    "prettier": "^1.18.2",
     "shx": "^0.3.2",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
@@ -52,7 +45,7 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/types": "^0.1.5"
+    "@trustwallet/types": "^0.1.7"
   },
   "publishConfig": {
     "access": "public"

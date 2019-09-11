@@ -4,9 +4,9 @@ export enum CoinType {
     <% }) %>
 }
 
-export namespace CoinType {
+export class CoinTypeUtils {
     <% methods.forEach((method) => { -%>
-        export function <%-method.name%> (coin: CoinType): <%-method.returnType%> {
+        static <%-method.name%>(coin: CoinType): <%-method.returnType%> {
             switch (coin) {
                 <% coins.forEach((coin) => { -%>
                     case CoinType.<%-coin.id%>: <%-method.body(coin)%>;

@@ -11,11 +11,8 @@
     "build": "lerna link && wsrun --exclude-missing --stages build $PKG",
     "nuke-build": "rm -rf lib; for d in packages/*/lib; do echo $d; rm -rf $d; done",
     "nuke": "yarn nuke-build && rm -rf node_modules; for d in packages/*/node_modules; do echo $d; rm -rf $d; done",
-    "prettify": "prettier --parser typescript --single-quote --write 'packages/**/*.{ts,tsx}'",
-    "check-prettier": "prettier --parser typescript --single-quote --list-different 'packages/**/*.{ts,tsx}'",
-    "lint": "wsrun --exclude-missing --parallel --fast-exit lint $PKG",
     "test": "wsrun --exclude-missing --stages --fast-exit test $PKG ",
-    "ci": "yarn build && yarn lint && yarn test"
+    "ci": "yarn build && yarn test"
   },
   "devDependencies": {
     "@types/jest": "^24.0.0",
