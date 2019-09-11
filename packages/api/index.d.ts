@@ -1,5 +1,1 @@
-import * as Api from './src';
-
-declare module '@trustwallet/api' {
-    export = Api;
-}
+declare module '@trustwallet/api';
