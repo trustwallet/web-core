@@ -26,7 +26,11 @@ export class CosmosUnbond {
     entries: CosmosUnbondEntry[];
 
     getPending(): CosmosUnbondEntry[] {
-        return this.entries.filter(entry => entry.completionTime.getDate() > Date.now());
+        return this.entries.filter(entry => entry.completionTime.getTime() > Date.now());
+    }
+
+    getReleaseDate(): Date {
+        return new Date(this.entries.reduce((prev, entry) => Math.max(entry.completionTime.getTime(), prev), 0));
     }
 
     getPendingBalance(): BigNumber {

@@ -7,6 +7,7 @@ import { CosmosUnbond } from './models/CosmosUnbond';
 import { CosmosReward } from './models/CosmosReward';
 import BigNumber from 'bignumber.js';
 import { Utils } from './utils';
+import { CosmosStakingInfo } from './models/CosmosStakingInfo';
 
 export class CosmosRPC {
     rpcUrl: string;
@@ -42,6 +43,16 @@ export class CosmosRPC {
                 new BigNumber(0),
             ),
         );
+    }
+
+    async unstakingReleaseDate(address: string): Promise<Date> {
+        const unbonds = await this.listUnbondDelegations(address);
+        return new Date(unbonds.reduce((acc, unbond) => Math.max(acc, unbond.getReleaseDate().getTime()), 0));
+    }
+
+    async getStakingParameters(): Promise<CosmosStakingInfo> {
+        let response = await axios.get(this.query().getStakingParameters());
+        return plainToClass(CosmosStakingInfo, response.data);
     }
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
