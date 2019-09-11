@@ -1,1 +1,5 @@
-declare module '@trustwallet/rpc';
+import * as Rpc from './src';
+
+declare module '@trustwallet/rpc' {
+    export = Rpc;
+}

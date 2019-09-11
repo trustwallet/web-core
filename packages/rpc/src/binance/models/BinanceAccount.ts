@@ -3,19 +3,19 @@ import { Type, Transform, Expose } from 'class-transformer';
 import BigNumber from 'bignumber.js';
 
 class BinanceTokenBalance {
-    symbol: string
-    free: string
-    locked: string
-    frozen: string
+    symbol: string;
+    free: string;
+    locked: string;
+    frozen: string;
 }
 
 export class BinanceAccount {
-    address: string
+    address: string;
     @Transform(value => new BigNumber(value), { toClassOnly: true })
-    @Expose({name: "account_number"})
-    accountNumber: BigNumber
+    @Expose({ name: 'account_number' })
+    accountNumber: BigNumber;
     @Transform(value => new BigNumber(value), { toClassOnly: true })
-    sequence: BigNumber
+    sequence: BigNumber;
     @Type(() => BinanceTokenBalance)
-    balances: BinanceTokenBalance[]
+    balances: BinanceTokenBalance[];
 }
