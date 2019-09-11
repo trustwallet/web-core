@@ -1,9 +1,9 @@
 {
   "name": "@trustwallet/example",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "private": true,
   "dependencies": {
-    "@trustwallet/provider": "^0.1.7",
+    "@trustwallet/provider": "^0.1.9",
     "@trustwallet/types": "^0.1.7",
     "@trustwallet/walletconnect": "^0.0.16",
     "@types/axios": "^0.14.0",

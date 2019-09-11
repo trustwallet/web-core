@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/provider",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "description": "Trust provider wrapper",
   "author": "TrsutWallet",
   "license": "ISC",
