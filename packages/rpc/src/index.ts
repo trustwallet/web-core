@@ -10,3 +10,5 @@ export { EthereumRPC } from './ethereum/EthereumRPC';
 export * from './ethereum/models';
 export { BinanceRPC } from './binance/BinanceRPC';
 export * from './binance/models';
+export { IoTexRPC } from './iotex/IoTexRPC';
+export * from './iotex/models';
