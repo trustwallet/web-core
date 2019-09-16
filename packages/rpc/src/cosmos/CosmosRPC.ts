@@ -8,6 +8,7 @@ import { CosmosReward } from './models/CosmosReward';
 import BigNumber from 'bignumber.js';
 import { Utils } from './utils';
 import { CosmosStakingInfo } from './models/CosmosStakingInfo';
+import { NetworkError } from '../error/network-error';
 
 export class CosmosRPC {
     rpcUrl: string;
@@ -59,10 +60,14 @@ export class CosmosRPC {
         const url = this.query().broadcastTransaction();
         const options = {
             validateStatus: (status: number) => {
-                return status >= 200 && status < 500;
+                return status >= 200 && status <= 500;
             },
         };
         const response = await axios.post(url, data, options);
-        return plainToClass(CosmosBroadcastResult, response.data);
+        if (response.status >= 200 && response.status <= 300) {
+            return plainToClass(CosmosBroadcastResult, response.data);
+        } else {
+            throw new NetworkError(response.status, response.data);
+        }
     }
 }

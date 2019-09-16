@@ -75,5 +75,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "gitHead": "ca18a425404a7ffc52cbaf7d7db7dd1d19525a70"
+  "gitHead": "ca18a425404a7ffc52cbaf7d7db7dd1d19525a70",
+  "__processed_by_ivy_ngcc__": {
+    "main": "8.2.4"
+  }
 }
