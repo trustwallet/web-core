@@ -29,6 +29,30 @@ describe('CosmosRPC', () => {
         expect(axios.get).toHaveBeenCalledWith(toBeCalled);
     });
 
+    it('should list delegation transactions', async () => {
+        spyOn(axios, 'get').and.returnValue({ data: [] });
+
+        await rpc.listDelegationsTransactions(delegationAddress);
+        const toBeCalled = `${getEnv('COSMOS_RPC_URL')}/staking/delegators/${delegationAddress}/txs`;
+        expect(axios.get).toHaveBeenCalledWith(toBeCalled);
+    });
+
+    it('should list staking delegation transactions', async () => {
+        spyOn(axios, 'get').and.returnValue({ data: [] });
+
+        await rpc.listStakingTransactions(delegationAddress);
+        const toBeCalled = `${getEnv('COSMOS_RPC_URL')}/staking/delegators/${delegationAddress}/txs`;
+        expect(axios.get).toHaveBeenCalledWith(toBeCalled);
+    });
+
+    it('should list unstaking delegation transactions', async () => {
+        spyOn(axios, 'get').and.returnValue({ data: [] });
+
+        await rpc.listUnstakingTransactions(delegationAddress);
+        const toBeCalled = `${getEnv('COSMOS_RPC_URL')}/staking/delegators/${delegationAddress}/txs`;
+        expect(axios.get).toHaveBeenCalledWith(toBeCalled);
+    });
+
     it('should list unbonding delegations', async () => {
         spyOn(axios, 'get').and.returnValue({ data: '' });
 

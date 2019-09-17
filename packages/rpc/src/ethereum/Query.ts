@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { NetworkError } from '../errors/network-error';
 
 export interface EthRPCResult {
     id: number;
@@ -57,8 +58,16 @@ export class QueryBuilder {
     }
 
     async execute(): Promise<EthRPCResult> {
-        const resp = await axios.post(this.uri, this.params);
-        return resp.data;
+        try {
+            const resp = await axios.post(this.uri, this.params);
+            return resp.data;
+        } catch (error) {
+            if (error.response) {
+                throw new NetworkError(error.response.status, error.response.data);
+            } else {
+                throw error;
+            }
+        }
     }
 
     private endpoint(): string {
