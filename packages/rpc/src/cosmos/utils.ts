@@ -5,4 +5,9 @@ export class Utils {
         const denominator = new BigNumber(1000000);
         return microatom.dividedBy(denominator);
     }
+
+    static fromAtom(atom: BigNumber): BigNumber {
+        const denominator = new BigNumber(1000000);
+        return atom.multipliedBy(denominator);
+    }
 }

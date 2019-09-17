@@ -25,6 +25,26 @@ describe('cosmosRPC', () => {
         expect(delegations.length).toBeTruthy();
     });
 
+    it('should list delegation transactions', async () => {
+        let delegations = await rpc.listDelegationsTransactions(address);
+        expect(delegations.length).toBeTruthy();
+    });
+
+    it('should list staking delegation transactions', async () => {
+        let delegations = await rpc.listStakingTransactions(address);
+        expect(delegations.length).toBeTruthy();
+    });
+
+    it('should list unstaking delegation transactions', async () => {
+        let delegations = await rpc.listUnstakingTransactions(address);
+        expect(delegations.length).toBeTruthy();
+    });
+
+    it('should list delegation transactions', async () => {
+        let delegations = await rpc.listDelegationsTransactions(delegationAddress);
+        expect(delegations.length).toBeTruthy();
+    });
+
     it('should list unbonding delegations', async () => {
         let delegations = await rpc.listUnbondDelegations(delegator);
         expect(delegations.length).toBeTruthy();
