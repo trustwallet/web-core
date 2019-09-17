@@ -84,8 +84,11 @@ export class CosmosRPC {
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
         try {
-            const url = this.query().broadcastTransaction();
-            const response = await axios.post(url, data);
+            const url = this.query().broadcastTransaction();          
+            // change relay mode
+            const parsed = JSON.parse(data);
+            parsed.mode = 'async';
+            const response = await axios.post(url, JSON.stringify(parsed), options);
             return plainToClass(CosmosBroadcastResult, response.data);
         } catch (error) {
             if (error.response) {
