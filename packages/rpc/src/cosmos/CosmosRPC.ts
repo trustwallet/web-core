@@ -4,11 +4,12 @@ import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult } from './models
 import { Query } from './Query';
 import { CosmosAccountResult } from './models/CosmosAccount';
 import { CosmosUnbond } from './models/CosmosUnbond';
-import { CosmosReward } from './models/CosmosReward';
+import { CosmosAmount } from './models/CosmosAmount';
 import BigNumber from 'bignumber.js';
 import { Utils } from './utils';
 import { CosmosStakingInfo } from './models/CosmosStakingInfo';
-import { NetworkError } from '../errors/network-error';
+import { NetworkError } from '../error/network-error';
+import { CosmosTx, CosmosTxInternalType } from './models/CosmosTx';
 
 export class CosmosRPC {
     rpcUrl: string;
@@ -39,7 +40,7 @@ export class CosmosRPC {
     async getRewards(address: string): Promise<BigNumber> {
         let response = await axios.get(this.query().getRewards(address));
         return Utils.toAtom(
-            plainToClass<CosmosReward, any[]>(CosmosReward, response.data).reduce(
+            plainToClass<CosmosAmount, any[]>(CosmosAmount, response.data).reduce(
                 (acc, reward) => acc.plus(reward.amount),
                 new BigNumber(0),
             ),
@@ -54,6 +55,31 @@ export class CosmosRPC {
     async getStakingParameters(): Promise<CosmosStakingInfo> {
         let response = await axios.get(this.query().getStakingParameters());
         return plainToClass(CosmosStakingInfo, response.data);
+    }
+
+    async listDelegationsTransactions(address: string, validator?: string): Promise<CosmosTx[]> {
+        let response = await axios.get(this.query().listDelegationTransactions(address));
+        return plainToClass<CosmosTx, any[]>(CosmosTx, response.data).filter(tx =>
+            validator ? tx.tx.value.msg[0].value.validator_address === validator : true,
+        );
+    }
+
+    async listStakingTransactions(address: string, validator?: string): Promise<CosmosTx[]> {
+        let response = await axios.get(this.query().listDelegationTransactions(address));
+        return plainToClass<CosmosTx, any[]>(CosmosTx, response.data).filter(
+            tx =>
+                tx.tx.value.msg[0].type === CosmosTxInternalType.DELEGATE &&
+                (validator ? tx.tx.value.msg[0].value.validator_address === validator : true),
+        );
+    }
+
+    async listUnstakingTransactions(address: string, validator?: string): Promise<CosmosTx[]> {
+        let response = await axios.get(this.query().listDelegationTransactions(address));
+        return plainToClass<CosmosTx, any[]>(CosmosTx, response.data).filter(
+            tx =>
+                tx.tx.value.msg[0].type === CosmosTxInternalType.UNDELEGATE &&
+                (validator ? tx.tx.value.msg[0].value.validator_address === validator : true),
+        );
     }
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
