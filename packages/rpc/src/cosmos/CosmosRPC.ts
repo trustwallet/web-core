@@ -63,7 +63,10 @@ export class CosmosRPC {
                 return status >= 200 && status <= 500;
             },
         };
-        const response = await axios.post(url, data, options);
+        // change relay mode
+        const parsed = JSON.parse(data);
+        parsed.mode = 'async';
+        const response = await axios.post(url, JSON.stringify(parsed), options);
         if (response.status >= 200 && response.status <= 300) {
             return plainToClass(CosmosBroadcastResult, response.data);
         } else {
