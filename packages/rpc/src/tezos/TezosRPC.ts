@@ -3,6 +3,7 @@ import { plainToClass } from 'class-transformer';
 import { Query } from './Query';
 import { TezosHead, TezosManagerKey, TezosOperationResult, TezosOperation } from './models';
 import { TezosAccount } from './models/TezosAccount';
+import { NetworkError } from '../errors/network-error';
 
 export class TezosRPC {
     rpcUrl: string;
@@ -39,13 +40,16 @@ export class TezosRPC {
     }
 
     async broadcastTransaction(data: string): Promise<TezosOperationResult> {
-        const url = this.query().broadcastTransaction();
-        const options = {
-            validateStatus: (status: number) => {
-                return status >= 200 && status < 500;
-            },
-        };
-        const response = await axios.post(url, data, options);
-        return plainToClass(TezosOperationResult, response.data);
+        try {
+            const url = this.query().broadcastTransaction();
+            const response = await axios.post(url, data);
+            return plainToClass(TezosOperationResult, response.data);
+        } catch (error) {
+            if (error.response) {
+                throw new NetworkError(error.response.status, error.response.data);
+            } else {
+                throw error;
+            }
+        }
     }
 }

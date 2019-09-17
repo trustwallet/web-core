@@ -2,6 +2,7 @@ import axios from 'axios';
 import { plainToClass } from 'class-transformer';
 import {IoTeXAccount, IoTexBroadcastResult, IoTexTransaction} from './models';
 import { Query } from './Query';
+import { NetworkError } from '../errors/network-error';
 
 export class IoTexRPC {
     rpcUrl: string;
@@ -28,16 +29,21 @@ export class IoTexRPC {
 
 
     async broadcastTransaction(data: string): Promise<IoTexBroadcastResult> {
-        const url = this.query().broadcastTransaction(data);
-        const options = {
-            validateStatus: (status: number) => {
-                return status >= 200 && status < 500;
-            },
-            headers: {
-                'Content-Type': 'application/json'
+        try {
+            const url = this.query().broadcastTransaction(data);
+            const options = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            const response = await axios.post(url, null, options);
+            return plainToClass(IoTexBroadcastResult, response.data);
+        } catch (error) {
+            if (error.response) {
+                throw new NetworkError(error.response.status, error.response.data);
+            } else {
+                throw error;
             }
-        };
-        const response = await axios.post(url, null, options);
-        return plainToClass(IoTexBroadcastResult, response.data);
+        }
     }
 }

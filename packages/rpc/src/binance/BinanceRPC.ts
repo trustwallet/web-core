@@ -9,6 +9,7 @@ import {
     BinanceRPCTransaction,
     BinanceBroadcastResult,
 } from './models';
+import { NetworkError } from '../errors/network-error';
 
 export class BinanceRPC {
     rpcUrl: string;
@@ -47,16 +48,21 @@ export class BinanceRPC {
     }
 
     async broadcastTransaction(requestData: string, sync: string): Promise<BinanceBroadcastResult> {
-        const url = this.query().broadcastTransaction(sync);
-        const options = {
-            headers: {
-                'Content-Type': 'text/plain',
-            },
-            validateStatus: (status: number) => {
-                return status >= 200 && status < 500;
-            },
-        };
-        const { data } = await axios.post(url, requestData, options);
-        return plainToClass(BinanceBroadcastResult, data);
+        try {
+            const url = this.query().broadcastTransaction(sync);
+            const options = {
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+            };
+            const { data } = await axios.post(url, requestData, options);
+            return plainToClass(BinanceBroadcastResult, data);
+        } catch (error) {
+            if (error.response) {
+                throw new NetworkError(error.response.status, error.response.data);
+            } else {
+                throw error;
+            }
+        }
     }
 }
