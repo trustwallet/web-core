@@ -8,7 +8,7 @@ import { CosmosAmount } from './models/CosmosAmount';
 import BigNumber from 'bignumber.js';
 import { Utils } from './utils';
 import { CosmosStakingInfo } from './models/CosmosStakingInfo';
-import { NetworkError } from '../error/network-error';
+import { NetworkError } from '../errors/network-error';
 import { CosmosTx, CosmosTxInternalType } from './models/CosmosTx';
 
 export class CosmosRPC {
