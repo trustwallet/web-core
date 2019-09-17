@@ -88,7 +88,7 @@ export class CosmosRPC {
             // change relay mode
             const parsed = JSON.parse(data);
             parsed.mode = 'async';
-            const response = await axios.post(url, JSON.stringify(parsed), options);
+            const response = await axios.post(url, JSON.stringify(parsed));
             return plainToClass(CosmosBroadcastResult, response.data);
         } catch (error) {
             if (error.response) {
