@@ -13,6 +13,7 @@ import {
 import { BitcoinEstimateFee } from './models/BitcoinEstimateFee';
 import { BitcoinChainInfo } from './models/BitcoinChainInfo';
 import { BitcoinAddressInfo } from './models/BitcoinAddressInfo';
+import { NetworkError } from '../errors/network-error';
 
 export class BitcoinRPC {
     rpcUrl: string;
@@ -62,16 +63,21 @@ export class BitcoinRPC {
     }
 
     async broadcastTransaction(data: string): Promise<BitcoinBroadcastResult> {
-        const url = this.query().broadcastTransaction();
-        const options = {
-            headers: {
-                'content-type': 'text/plain; charset=utf-8',
-            },
-            validateStatus: (status: number) => {
-                return status >= 200 && status < 500;
-            },
-        };
-        const response = await axios.post(url, data, options);
-        return plainToClass(BitcoinBroadcastResult, response.data);
+        try {
+            const url = this.query().broadcastTransaction();
+            const options = {
+                headers: {
+                    'content-type': 'text/plain; charset=utf-8',
+                }
+            };
+            const response = await axios.post(url, data, options);
+            return plainToClass(BitcoinBroadcastResult, response.data);
+        } catch (error) {
+            if (error.response) {
+                throw new NetworkError(error.response.status, error.response.data);
+            } else {
+                throw error;
+            }
+        }
     }
 }

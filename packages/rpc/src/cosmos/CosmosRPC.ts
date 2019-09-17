@@ -83,17 +83,16 @@ export class CosmosRPC {
     }
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
-        const url = this.query().broadcastTransaction();
-        const options = {
-            validateStatus: (status: number) => {
-                return status >= 200 && status <= 500;
-            },
-        };
-        const response = await axios.post(url, data, options);
-        if (response.status >= 200 && response.status <= 300) {
+        try {
+            const url = this.query().broadcastTransaction();
+            const response = await axios.post(url, data);
             return plainToClass(CosmosBroadcastResult, response.data);
-        } else {
-            throw new NetworkError(response.status, response.data);
+        } catch (error) {
+            if (error.response) {
+                throw new NetworkError(error.response.status, error.response.data);
+            } else {
+                throw error;
+            }
         }
     }
 }
