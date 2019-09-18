@@ -39,13 +39,6 @@ export class TezosRPC {
         return plainToClass(TezosOperation, response.data);
     }
 
-    async getKt1Address(contractId: string): Promise<string|null> {
-        const manager = await this.getManagerKey(contractId);
-        if (manager.key === undefined) { return null }
-
-        return manager.key;
-    }
-
     async broadcastTransaction(data: string): Promise<TezosOperationResult> {
         try {
             const url = this.query().broadcastTransaction();
