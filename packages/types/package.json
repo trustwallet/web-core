@@ -18,7 +18,8 @@
   "scripts": {
     "create-index": "cti src",
     "build": "webpack",
-    "clean": "shx rm -rf lib node_modules tsconfig.tsbuildinfo"
+    "clean": "shx rm -rf lib node_modules tsconfig.tsbuildinfo",
+    "test": "yarn jest --config ../../jest.config.js --colors"
   },
   "publishConfig": {
     "access": "public"
