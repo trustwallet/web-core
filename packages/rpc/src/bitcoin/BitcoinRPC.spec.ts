@@ -9,7 +9,7 @@ describe('bitcoinRPC', () => {
     let tx: string;
 
     beforeAll(() => {
-        require('dotenv').config({ path: __dirname + '/./.env' });
+        require('dotenv').config({ path: __dirname + '/../.env' });
         rpc = new BitcoinRPC(getEnv('BTC_RPC_URL'));
         xpub =
             'xpub6CUGRUonZSQ4TWtTMmzXdrXDtypWKiKrhko4egpiMZbpiaQL2jkwSB1icqYh2cfDfVxdx4df189oLKnC5fSwqPfgyP3hooxujYzAu3fDVmz';

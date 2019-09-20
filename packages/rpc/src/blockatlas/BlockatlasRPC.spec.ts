@@ -4,7 +4,7 @@ import { getEnv } from '../utils';
 describe('blockatlas', () => {
     let rpc: BlockatlasRPC;
     beforeAll(() => {
-        require('dotenv').config({ path: __dirname + '/./.env' });
+        require('dotenv').config({ path: __dirname + '/../.env' });
         rpc = new BlockatlasRPC(getEnv('BLOCKATLAS_RPC_URL'), 'cosmos');
     });
 

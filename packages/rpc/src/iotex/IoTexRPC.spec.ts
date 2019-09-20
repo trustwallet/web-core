@@ -9,7 +9,7 @@ describe('IotexRPC', () => {
 
 
     beforeAll(() => {
-        require('dotenv').config({ path: __dirname + '/./.env' });
+        require('dotenv').config({ path: __dirname + '/../.env' });
         rpc = new IoTexRPC(getEnv("IOTEX_RPC_URL"));
         address = 'io1juvx5g063eu4ts832nukp4vgcwk2gnc5cu9ayd';
         hash = '42a00398213168b143714a26ba135f81c262bf9546c1d9f3e1c47385ec4a7379'

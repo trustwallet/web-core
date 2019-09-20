@@ -10,11 +10,11 @@ export class Query {
     getHead = () => this.uri(`chains/main/blocks/head`);
 
     getManagerKey = (contractId: string) =>
-        this.uri(`/chains/main/blocks/head/context/contracts/${contractId}/manager_key`);
+        this.uri(`chains/main/blocks/head/context/contracts/${contractId}/manager_key`);
 
     getBlockOperations = (block: string) => this.uri(`chains/main/blocks/${block}/operations`);
 
-    broadcastTransaction = () => this.uri(`/injection/operation?chain=main`);
+    broadcastTransaction = () => this.uri(`injection/operation?chain=main`);
 
     private uri(path: string) {
         return `${this.rpcUrl}/${path}`;
