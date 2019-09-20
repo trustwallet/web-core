@@ -53,7 +53,7 @@ export class TronRPC {
     async unstakingReleaseDate(address: string): Promise<Date> {
         const account = await this.getAccount(address);
         return account.frozen.reduce(
-            (acc, frozen) => (frozen.expire_time.getTime() > acc.getTime() ? frozen.expire_time : acc),
+            (acc, frozen) => (frozen.expireTime.getTime() > acc.getTime() ? frozen.expireTime : acc),
             new Date(),
         );
     }
