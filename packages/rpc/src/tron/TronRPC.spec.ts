@@ -3,11 +3,11 @@ import { getEnv } from '../utils';
 
 describe('TronRPC', () => {
     let rpc: TronRPC;
-    const address = 'TPJYCz8ppZNyvw7pTwmjajcx4Kk1MmEUhD';
+    const delegator = 'TKYT8YiiL58h8USHkmVEhCYpNfgSyiWPcW';
     const txID = '46cde30f74164c6fc906f4d8c195823431631cf06658b6e3782b82504d58d077';
 
     beforeEach(() => {
-        require('dotenv').config({ path: __dirname + '/../.env' });
+        require('dotenv').config({ path: __dirname + '/./.env' });
         rpc = new TronRPC(getEnv('TRON_RPC_URL'));
     });
 
@@ -17,8 +17,18 @@ describe('TronRPC', () => {
     });
 
     it('should get account', async () => {
-        const account = await rpc.getAccount(address);
-        expect(account.address).toBe(address);
+        const account = await rpc.getAccount(delegator);
+        expect(account.address).toBe(delegator);
+    });
+
+    it('should get votes', async () => {
+        const delegations = await rpc.listDelegations(delegator);
+        expect(delegations.length).toBeGreaterThan(0);
+    });
+
+    it('should get frozen', async () => {
+        const frozen = await rpc.listFrozen(delegator);
+        expect(frozen.length).toBeGreaterThan(0);
     });
 
     it('should get transaction by id', async () => {

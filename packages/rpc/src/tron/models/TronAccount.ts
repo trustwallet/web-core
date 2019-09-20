@@ -8,7 +8,7 @@ export class TronVote {
 }
 
 export class TronFrozen {
-    @Transform(value => Utils.toTron(value))
+    @Transform(value => Utils.toTron(new BigNumber(value)))
     frozen_balance: BigNumber;
 
     @Type(() => Date)
@@ -24,17 +24,17 @@ export class TronAccountResource {
     @Type(() => Date)
     latest_consume_time_for_energy: Date;
 
-    @Transform(value => Utils.toTron(value))
+    @Transform(value => Utils.toTron(new BigNumber(value)))
     acquired_delegated_frozen_balance_for_energy: number;
 
-    @Transform(value => Utils.toTron(value))
+    @Transform(value => Utils.toTron(new BigNumber(value)))
     delegated_frozen_balance_for_energy: number;
 }
 
 export class TronAccount {
     account_name: string;
     address: string;
-    @Transform(value => Utils.toTron(value))
+    @Transform(value => Utils.toTron(new BigNumber(value)))
     balance: BigNumber;
 
     @Type(() => TronVote)
@@ -57,10 +57,10 @@ export class TronAccount {
     @Type(() => TronAccountResource)
     account_resource: TronAccountResource;
 
-    @Transform(value => Utils.toTron(value))
+    @Transform(value => Utils.toTron(new BigNumber(value)))
     acquired_delegated_frozen_balance_for_bandwidth: number;
 
-    @Transform(value => Utils.toTron(value))
+    @Transform(value => Utils.toTron(new BigNumber(value)))
     delegated_frozen_balance_for_bandwidth: number;
 
     asset_issued_ID: string;

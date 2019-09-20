@@ -14,3 +14,4 @@ export { IoTexRPC } from './iotex/IoTexRPC';
 export * from './iotex/models';
 export { TronRPC } from './tron/TronRPC';
 export * from './tron/models';
+export { Utils as TronUtils } from './tron/utils';

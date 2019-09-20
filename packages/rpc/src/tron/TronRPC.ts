@@ -6,6 +6,7 @@ import { plainToClass } from 'class-transformer';
 import { TronAccount, TronFrozen, TronVote } from './models/TronAccount';
 import { TronBroadcastResult } from './models/TronBroadcastResult';
 import { TronBlock, TronTransaction } from './models';
+import { ClassType } from 'class-transformer/ClassTransformer';
 
 export class TronRPC {
     rpcUrl: string;
@@ -60,12 +61,23 @@ export class TronRPC {
         return { holdTime: 3 };
     }
 
+    async freezeBalance(data: string): Promise<TronBroadcastResult> {
+        return await this.postData(this.query().freezeBalance(), data, TronBroadcastResult);
+    }
+
+    async unfreezeBalance(data: string): Promise<TronBroadcastResult> {
+        return await this.postData(this.query().unfreezeBalance(), data, TronBroadcastResult);
+    }
+
     async broadcastTransaction(data: string): Promise<TronBroadcastResult> {
+        return await this.postData(this.query().broadcastTransaction(), data, TronBroadcastResult);
+    }
+
+    private async postData<T>(data: string, url: string, cls: ClassType<T>): Promise<T> {
         try {
-            const url = this.query().broadcastTransaction();
             const response = await axios.post(url, data);
 
-            return plainToClass(TronBroadcastResult, response.data);
+            return plainToClass(cls, response.data);
         } catch (error) {
             if (error.response) {
                 throw new NetworkError(error.response.status, error.response.data);
