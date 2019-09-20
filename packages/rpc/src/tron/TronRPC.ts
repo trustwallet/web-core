@@ -73,7 +73,7 @@ export class TronRPC {
         return await this.postData(this.query().broadcastTransaction(), data, TronBroadcastResult);
     }
 
-    private async postData<T>(data: string, url: string, cls: ClassType<T>): Promise<T> {
+    private async postData<T>(url: string, data: string, cls: ClassType<T>): Promise<T> {
         try {
             const response = await axios.post(url, data);
 
