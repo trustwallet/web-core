@@ -30,7 +30,7 @@ export function fromBase58(data: string): Uint8Array {
     for (let i = data.length - 1; i >= 0; i--) {
         let pos = ALPHABET.indexOf(data.charAt(i));
         if (pos === -1) {
-            throw new Error("Invalid Base58 data");
+            throw new Error('Invalid Base58 data');
         }
         let num = new BigNumber(pos);
         answer = answer.plus(num.times(base));
@@ -39,7 +39,7 @@ export function fromBase58(data: string): Uint8Array {
 
     let hex = answer.toString(16);
     if (hex.length % 2 !== 0) {
-        hex = "0" + hex;
+        hex = '0' + hex;
     }
 
     return fromHex(hex);

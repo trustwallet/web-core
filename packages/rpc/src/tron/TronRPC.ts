@@ -1,9 +1,11 @@
 import { Query } from './Query';
-import axios from 'axios';
 import 'reflect-metadata';
-import { plainToClass } from 'class-transformer';
-import { TronAccount, TronBlock, TronBroadcastResult, TronTransaction } from './models';
 import { NetworkError } from '../errors/network-error';
+import axios from 'axios';
+import { plainToClass } from 'class-transformer';
+import { TronAccount, TronFrozen, TronVote } from './models/TronAccount';
+import { TronBroadcastResult } from './models/TronBroadcastResult';
+import { TronBlock, TronTransaction } from './models';
 
 export class TronRPC {
     rpcUrl: string;
@@ -23,21 +25,46 @@ export class TronRPC {
 
     async getAccount(address: string): Promise<TronAccount> {
         let response = await axios.post(this.query().getAccount(), {
-            address, visible: true
+            address,
+            visible: true,
         });
         return plainToClass(TronAccount, response.data);
     }
 
     async getTransaction(id: string): Promise<TronTransaction> {
         let response = await axios.post(this.query().getTransactionById(), {
-            value: id
+            value: id,
         });
         return plainToClass(TronTransaction, response.data);
     }
 
+    async listDelegations(address: string): Promise<TronVote[]> {
+        const account = await this.getAccount(address);
+        return account.votes;
+    }
+
+    async listFrozen(address: string): Promise<TronFrozen[]> {
+        const account = await this.getAccount(address);
+        return account.frozen;
+    }
+
+    async unstakingReleaseDate(address: string): Promise<Date> {
+        const account = await this.getAccount(address);
+        return account.frozen.reduce(
+            (acc, frozen) => (frozen.expire_time.getTime() > acc.getTime() ? frozen.expire_time : acc),
+            new Date(),
+        );
+    }
+
+    async getStakingParameters(): Promise<{ holdTime: number }> {
+        return { holdTime: 3 };
+    }
+
     async broadcastTransaction(data: string): Promise<TronBroadcastResult> {
         try {
-            let response = await axios.post(this.query().broadcastTransaction(), data);
+            const url = this.query().broadcastTransaction();
+            const response = await axios.post(url, data);
+
             return plainToClass(TronBroadcastResult, response.data);
         } catch (error) {
             if (error.response) {

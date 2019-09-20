@@ -13,12 +13,12 @@ class TronBlockRawData {
     @Transform(value => new BigNumber(value), { toClassOnly: true })
     number: BigNumber;
 
-    @Expose({ name: 'witness_address'})
+    @Expose({ name: 'witness_address' })
     witnessAddress: string;
 }
 
 class TronBlockHeader {
-    @Expose({ name: 'raw_data'})
+    @Expose({ name: 'raw_data' })
     @Type(() => TronBlockRawData)
     rawData: TronBlockRawData;
 }
@@ -26,9 +26,7 @@ class TronBlockHeader {
 export class TronBlock {
     blockID: string;
 
-    @Expose({ name: 'block_header'})
+    @Expose({ name: 'block_header' })
     @Type(() => TronBlockHeader)
     blockHeader: TronBlockHeader;
 }
-
-

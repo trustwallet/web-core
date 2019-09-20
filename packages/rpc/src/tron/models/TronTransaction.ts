@@ -27,15 +27,14 @@ class TronTransactionRawData {
     contract: TronContract[];
 }
 
-
 export class TronTransaction {
     txID: string;
     signature: string[];
 
-    @Expose({ name: 'raw_data'})
+    @Expose({ name: 'raw_data' })
     @Type(() => TronTransactionRawData)
     rawData: TronTransactionRawData;
 
-    @Expose({ name: 'raw_data_hex'})
+    @Expose({ name: 'raw_data_hex' })
     rawDataHex: string;
 }

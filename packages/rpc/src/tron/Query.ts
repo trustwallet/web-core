@@ -5,17 +5,21 @@ export class Query {
         this.rpcUrl = rpcUrl;
     }
 
-    getNowBlock = () => this.uri("/wallet/getnowblock");
+    getNowBlock = () => this.uri('/wallet/getnowblock');
 
-    getAccount = () => this.uri("/wallet/getaccount");
+    getAccount = () => this.uri('/wallet/getaccount');
 
-    broadcastTransaction = () => this.uri("/wallet/broadcasttransaction");
+    broadcastTransaction = () => this.uri('/wallet/broadcasttransaction');
 
-    getTransactionById = () => this.uri("/wallet/gettransactionbyid");
+    getTransactionById = () => this.uri('/wallet/gettransactionbyid');
 
-    triggerSmartContract = () => this.uri("/wallet/triggersmartcontract");
+    triggerSmartContract = () => this.uri('/wallet/triggersmartcontract');
 
-    private uri(path: string) {
+    freezeBalance = () => this.uri('/wallet/freezebalance');
+
+    unfreezeBalance = () => this.uri('/wallet/unfreezebalance');
+
+    private uri(path: string): string {
         return `${this.rpcUrl}/${path}`;
     }
 }

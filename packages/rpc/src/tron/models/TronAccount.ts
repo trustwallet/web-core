@@ -1,41 +1,67 @@
 import BigNumber from 'bignumber.js';
-import { TronAsset } from './TronAsset';
-import 'reflect-metadata';
-import { Expose, Transform, Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
+import { Utils } from '../utils';
 
-class TronVote {
-    @Expose({ name: 'vote_address'})
-    voteAddress: string;
-
-    @Expose({ name: 'vote_count'})
-    voteCount: number;
+export class TronVote {
+    vote_address: string;
+    vote_count: number;
 }
 
-class TronFrozenBalance {
-    @Transform(value => new BigNumber(value), { toClassOnly: true })
-    @Expose({ name: 'frozen_balance'})
-    frozenBalance: BigNumber;
+export class TronFrozen {
+    @Transform(value => Utils.toTron(value))
+    frozen_balance: BigNumber;
 
-    @Expose({ name: 'expire_time'})
-    @Transform(value => new Date(value), { toClassOnly: true })
-    expireTime: Date;
+    @Type(() => Date)
+    expire_time: Date;
+}
+
+export class TronAccountResource {
+    energy_usage: number;
+
+    @Type(() => TronFrozen)
+    frozen_balance_for_energy: TronFrozen;
+
+    @Type(() => Date)
+    latest_consume_time_for_energy: Date;
+
+    @Transform(value => Utils.toTron(value))
+    acquired_delegated_frozen_balance_for_energy: number;
+
+    @Transform(value => Utils.toTron(value))
+    delegated_frozen_balance_for_energy: number;
 }
 
 export class TronAccount {
-    @Transform(value => new BigNumber(value), { toClassOnly: true })
-    balance: BigNumber;
+    account_name: string;
     address: string;
-
-    @Type(() => TronAsset)
-    asset: TronAsset[];
+    @Transform(value => Utils.toTron(value))
+    balance: BigNumber;
 
     @Type(() => TronVote)
-    vote: TronVote[];
+    votes: TronVote[];
 
-    @Type(() => TronFrozenBalance)
-    frozen: TronFrozenBalance[];
+    @Type(() => TronFrozen)
+    frozen: TronFrozen[];
 
-    @Type(() => TronFrozenBalance)
-    @Expose({ name: 'frozen_supply' })
-    frozenSupply: TronFrozenBalance[];
+    @Type(() => Date)
+    create_time: Date;
+
+    @Type(() => Date)
+    latest_opration_time: Date;
+    asset_issued_name: string;
+    free_net_usage: number;
+
+    @Type(() => Date)
+    latest_consume_free_time: Date;
+
+    @Type(() => TronAccountResource)
+    account_resource: TronAccountResource;
+
+    @Transform(value => Utils.toTron(value))
+    acquired_delegated_frozen_balance_for_bandwidth: number;
+
+    @Transform(value => Utils.toTron(value))
+    delegated_frozen_balance_for_bandwidth: number;
+
+    asset_issued_ID: string;
 }
