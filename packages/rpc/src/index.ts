@@ -12,3 +12,5 @@ export { BinanceRPC } from './binance/BinanceRPC';
 export * from './binance/models';
 export { IoTexRPC } from './iotex/IoTexRPC';
 export * from './iotex/models';
+export { TronRPC } from './tron/TronRPC';
+export * from './tron/models';

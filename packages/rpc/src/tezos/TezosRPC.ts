@@ -1,4 +1,5 @@
 import axios from 'axios';
+import 'reflect-metadata';
 import { plainToClass } from 'class-transformer';
 import { Query } from './Query';
 import { TezosHead, TezosManagerKey, TezosOperationResult, TezosOperation } from './models';
