@@ -7,6 +7,7 @@ import { TronAccount, TronFrozen, TronVote } from './models/TronAccount';
 import { TronBroadcastResult } from './models/TronBroadcastResult';
 import { TronBlock, TronTransaction } from './models';
 import { ClassType } from 'class-transformer/ClassTransformer';
+import { TronStakingInfo } from './models/TronStakingInfo';
 
 export class TronRPC {
     rpcUrl: string;
@@ -57,8 +58,8 @@ export class TronRPC {
         );
     }
 
-    async getStakingParameters(): Promise<{ holdTime: number }> {
-        return { holdTime: 3 };
+    async getStakingParameters(): Promise<TronStakingInfo> {
+        return plainToClass(TronStakingInfo, { lockTime: 3 });
     }
 
     async freezeBalance(data: string): Promise<TronBroadcastResult> {
