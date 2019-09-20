@@ -8,7 +8,7 @@ describe('cosmosRPC', () => {
     let delegator: string;
 
     beforeAll(() => {
-        require('dotenv').config({ path: __dirname + '/./.env' });
+        require('dotenv').config({ path: __dirname + '/../.env' });
         rpc = new CosmosRPC(getEnv('COSMOS_RPC_URL'));
         address = 'cosmos1lcgtmf3gkdq4cuelly6554znqqhsl6eqy4r3f5';
         delegationAddress = 'cosmos1vjrx0lks65yefnsz4xk92vugda2z25esym5ypp';

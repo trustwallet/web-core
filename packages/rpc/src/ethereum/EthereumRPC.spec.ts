@@ -8,7 +8,7 @@ describe('EthereumRPC', () => {
     let tx: string;
 
     beforeAll(() => {
-        require('dotenv').config({ path: __dirname + '/./.env' });
+        require('dotenv').config({ path: __dirname + '/../.env' });
         rpc = new EthereumRPC(getEnv('GETH_RPC_URL'));
         address1 = '0xc94770007dda54cF92009BFF0dE90c06F603a09f';
         address2 = '0x530d2A8BA8D71E359AdBD4Dc68E289d6f91c4283';

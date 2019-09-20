@@ -68,7 +68,7 @@ export class BitcoinRPC {
             const options = {
                 headers: {
                     'content-type': 'text/plain; charset=utf-8',
-                }
+                },
             };
             const response = await axios.post(url, data, options);
             return plainToClass(BitcoinBroadcastResult, response.data);

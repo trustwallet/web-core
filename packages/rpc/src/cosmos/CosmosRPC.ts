@@ -84,7 +84,7 @@ export class CosmosRPC {
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {
         try {
-            const url = this.query().broadcastTransaction();          
+            const url = this.query().broadcastTransaction();
             // change relay mode
             const parsed = JSON.parse(data);
             parsed.mode = 'async';
