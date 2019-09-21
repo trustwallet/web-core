@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/walletconnect",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Trust WalletConnect extensions",
   "main": "lib/index.js",
   "directories": {
@@ -45,7 +45,7 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/types": "^0.1.12",
+    "@trustwallet/types": "^0.1.13",
     "@walletconnect/core": "^1.0.0-beta.32",
     "@walletconnect/types": "^1.0.0-beta.32",
     "@walletconnect/utils": "^1.0.0-beta.32"
