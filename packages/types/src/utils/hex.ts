@@ -4,6 +4,9 @@ export function toHex(data: Uint8Array, prefix: boolean = false): string {
 }
 
 export function fromHex(data: string): Uint8Array {
+    if (data === '' || data === null || data === undefined) {
+        return new Uint8Array();
+    }
     if (data.length % 2 !== 0) {
         throw new Error('invalid data size');
     }

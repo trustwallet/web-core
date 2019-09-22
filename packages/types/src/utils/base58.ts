@@ -24,6 +24,10 @@ export function toBase58(data: Uint8Array | string): string {
 }
 
 export function fromBase58(data: string): Uint8Array {
+    if (data === '' || data === null || data === undefined) {
+        return new Uint8Array();
+    }
+
     let answer = new BigNumber(0);
     let base = new BigNumber(1);
 

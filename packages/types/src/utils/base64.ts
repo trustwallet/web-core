@@ -51,5 +51,9 @@ export function toBase64(bytes: Uint8Array): string {
 }
 
 export function fromBase64(data: string): Uint8Array {
+    if (data === '' || data === null || data === undefined) {
+        return new Uint8Array();
+    }
+
     return toUint8Array(atob(data));
 }
