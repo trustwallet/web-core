@@ -12,13 +12,22 @@ class Reward {
     annual?: number;
 }
 
+export class Details {
+    @Type(() => Reward)
+    reward: Reward;
+
+    lockTime: number;
+    minimumAmount: string;
+}
+
 export class BlockatlasValidator {
     id: string;
     status: boolean;
     @Type(() => Info)
     info: Info;
-    @Type(() => Reward)
-    reward: Reward;
+
+    @Type(() => Details)
+    details: Details;
 }
 
 export class BlockatlasValidatorResult extends BlockatlasResult {
