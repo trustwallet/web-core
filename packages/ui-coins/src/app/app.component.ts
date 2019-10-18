@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { CoinModel } from './coin.model';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
     @Input() coins: string;

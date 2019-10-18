@@ -1,4 +1,14 @@
-import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import {
+    Component,
+    ContentChild,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    TemplateRef,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import * as nanoid from 'nanoid';
@@ -11,6 +21,7 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
     selector: 'app-dropdown',
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class DropdownComponent implements OnInit {
     @Input() items: Observable<any[]>;

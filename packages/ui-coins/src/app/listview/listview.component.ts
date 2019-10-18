@@ -8,6 +8,7 @@ import {
     OnInit,
     Output,
     TemplateRef,
+    ViewEncapsulation,
 } from '@angular/core';
 import { ContentDirective } from '../../directives/content.directive';
 import { Observable } from 'rxjs';
@@ -21,6 +22,7 @@ import { FooterDirective } from '../../directives/footer.directive';
     selector: 'app-listview',
     templateUrl: './listview.component.html',
     styleUrls: ['./listview.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class ListviewComponent implements AfterViewInit {
     @Input() header: string;

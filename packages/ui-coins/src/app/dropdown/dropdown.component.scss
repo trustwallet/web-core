@@ -1,11 +1,6 @@
-.dropdown-menu.show {
-  display: block;
-}
-
 .dropdown-menu {
   max-height: 500px;
   overflow: scroll;
-  display: none;
 }
 
 .dropdown-toggle::after {
