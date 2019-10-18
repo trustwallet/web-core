@@ -1,0 +1,47 @@
+<app-dropdown
+  [items]="coinsObs"
+  [selectedIndex]="0"
+  (select)="click($event)"
+  class="d-block w-100"
+>
+  <ng-template section>
+    <app-block-between>
+      <ng-template left>Coin</ng-template>
+      <ng-template right>Current APY</ng-template>
+    </app-block-between>
+  </ng-template>
+  <div *content="let item" class="btn btn-outline-primary d-block selector">
+    <app-block-between>
+      <ng-template left>
+        <app-label [image]="item.icon" alt="{{ item.name }}">
+          <ng-template content>
+            <div class="text-dark">{{ item.name }}</div>
+          </ng-template>
+        </app-label>
+      </ng-template>
+      <ng-template right>
+        <small class="success text-nowrap"
+        >{{ item.apr }}%
+          <span class="ml-1"
+          ><i class="mr-0 text-muted fa fa-chevron-down"></i></span
+          ></small>
+      </ng-template>
+    </app-block-between>
+  </div>
+  <div *item="let item" class="d-block w-100">
+    <app-block-between>
+      <ng-template left>
+        <app-label [image]="item.icon" alt="{{ item.name }}">
+          <ng-template content>
+            <div class="text-dark">{{ item.name }}</div>
+          </ng-template>
+        </app-label>
+      </ng-template>
+      <ng-template right>
+        <small class="success text-nowrap"
+        >{{ item.apr }}%
+        </small>
+      </ng-template>
+    </app-block-between>
+  </div>
+</app-dropdown>

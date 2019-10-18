@@ -1,0 +1,57 @@
+<ng-template #listView>
+  <ng-template let-tpl #section>
+    <div *ngIf="tpl" class="section">
+      <ng-container *ngTemplateOutlet="tpl"></ng-container>
+    </div>
+  </ng-template>
+  <ng-template let-tpl #footer>
+    <div *ngIf="tpl" class="footer">
+      <ng-container *ngTemplateOutlet="tpl"></ng-container>
+    </div>
+  </ng-template>
+  <ng-container
+    *ngTemplateOutlet="section; context: { $implicit: sectionTemplate }"
+  ></ng-container>
+  <ng-container *ngIf="dataSource | async as data; else loadingItems">
+    <ng-template #emptyList>
+      <div class="m-3">The list is empty</div>
+    </ng-template>
+    <ng-container *ngIf="data.length === 0">
+      <ng-container
+        *ngTemplateOutlet="noItemTemplate ? noItemTemplate : emptyList"
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngFor="let item of data">
+      <div
+        (click)="click(item)"
+        [ngClass]="{
+          'row row-container item pb-2 pt-2 pl-3 pr-3': custmizedCell
+        }"
+      >
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"
+        ></ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-template #loadingItems>
+    <ng-template ngFor let-i [ngForOf]="placeholders">
+      <ng-container *ngTemplateOutlet="placeholderTemplate"></ng-container>
+    </ng-template>
+  </ng-template>
+  <ng-container
+    *ngTemplateOutlet="footer; context: { $implicit: footerTemplate }"
+  ></ng-container>
+</ng-template>
+
+<ng-template #containerizedListView>
+  <app-content header="{{ header }}">
+    <ng-template content>
+      <ng-container *ngTemplateOutlet="listView"></ng-container>
+    </ng-template>
+  </app-content>
+</ng-template>
+
+<ng-container
+  *ngTemplateOutlet="containerized ? containerizedListView : listView"
+></ng-container>

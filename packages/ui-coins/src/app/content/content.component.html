@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="card col-12 p-0">
+      <div class="card-body p-0">
+        <h5 class="m-2 ml-3 font-weight-bolder" *ngIf="header">{{ header }}</h5>
+
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
