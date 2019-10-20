@@ -10,7 +10,7 @@
       <ng-template right>Current APY</ng-template>
     </app-block-between>
   </ng-template>
-  <div *content="let item" class="btn btn-outline-primary d-block selector">
+  <div *content="let item" class="btn btn-outline-primary d-block selector coin-item-selected">
     <app-block-between>
       <ng-template left>
         <app-label [image]="item.icon" alt="{{ item.name }}">
@@ -28,7 +28,7 @@
       </ng-template>
     </app-block-between>
   </div>
-  <div *item="let item" class="d-block w-100">
+  <div *item="let item" class="d-block w-100 coin-item">
     <app-block-between>
       <ng-template left>
         <app-label [image]="item.icon" alt="{{ item.name }}">
