@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/rpc",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "RPC service repository",
   "main": "lib/index.js",
   "directories": {
@@ -53,8 +53,8 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/api": "^0.1.15",
-    "@trustwallet/types": "^0.1.15",
+    "@trustwallet/api": "^0.1.16",
+    "@trustwallet/types": "^0.1.16",
     "axios": "^0.19.0",
     "bignumber.js": "^9.0.0",
     "class-transformer": "^0.2.3",

@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/types",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Trust common types",
   "homepage": "https://github.com/trustwallet/web-core#readme",
   "keywords": [],
