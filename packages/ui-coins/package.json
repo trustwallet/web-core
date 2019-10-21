@@ -1,5 +1,5 @@
 {
-  "name": "ui-coins",
+  "name": "@trustwallet/ui-coins",
   "version": "0.1.17",
   "scripts": {
     "ng": "ng",
