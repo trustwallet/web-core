@@ -1,0 +1,20 @@
+.row-container {
+  align-items: center;
+  margin: 0;
+}
+
+.row-container:hover {
+  cursor: pointer;
+  background-color: #f9fafb;
+}
+
+.item {
+  min-height: 52px;
+}
+
+.section {
+  background: #f9fafb;
+  padding: 10px 16px;
+  color: #aaaaaa;
+  font-size: 13px;
+}
