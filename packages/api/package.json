@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/api",
-  "version": "0.1.14",
+  "version": "0.1.16",
   "description": "Trust package repository",
   "main": "lib/index.js",
   "directories": {
@@ -48,7 +48,7 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
-    "@trustwallet/types": "^0.1.14",
+    "@trustwallet/types": "^0.1.16",
     "@types/axios": "^0.14.0",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.7.1",

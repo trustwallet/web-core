@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/ui",
-  "version": "0.1.6",
+  "version": "0.1.16",
   "description": "UI components of Trust Wallet",
   "main": "index.js",
   "scripts": {
