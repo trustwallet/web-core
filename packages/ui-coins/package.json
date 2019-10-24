@@ -1,10 +1,12 @@
 {
   "name": "@trustwallet/ui-coins",
   "version": "0.1.21",
+  "main": "dist/ui-coins/main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "sh ./build.sh",
+    "prepare": "npm run build",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
