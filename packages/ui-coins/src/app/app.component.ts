@@ -10,7 +10,7 @@ import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 })
 export class AppComponent implements OnInit {
     @Input() coins: string;
-    @Output() selected = new EventEmitter<CoinModel>();
+    @Input() selected = new ReplaySubject<CoinModel>(1);
 
     coinsObs = new ReplaySubject<CoinModel[]>(1);
 

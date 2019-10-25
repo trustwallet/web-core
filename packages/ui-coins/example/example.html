@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="../dist/ui-coins/main.js"></script>
+  <script src="main.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
   <script>
       (function() {
           setTimeout(() => {
-              console.log(document.getElementById('test'));
-              document.getElementById('test').addEventListener('selected', ({detail}) => {
-                  console.log(detail);
-              });
+              console.log(document.getElementById('test').coins);
+              document.getElementById('test').selected.subscribe(coin => {
+                  console.log(coin);
+              })
           }, 10);
       })()
   </script>
