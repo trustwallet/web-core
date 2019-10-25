@@ -6,7 +6,7 @@ import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent implements OnInit {
     @Input() coins: string;
