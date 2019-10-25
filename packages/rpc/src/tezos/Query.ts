@@ -13,6 +13,9 @@ export class Query {
 
     broadcastTransaction = () => this.uri(`injection/operation?chain=main`);
 
+    getManagerKey = (contractId: string) =>
+        this.uri(`chains/main/blocks/head/context/contracts/${contractId}/manager_key`);
+
     private uri(path: string) {
         return `${this.rpcUrl}/${path}`;
     }

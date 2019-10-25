@@ -21,6 +21,11 @@ describe('TezosRPC', () => {
         expect(account.balance).toEqual(new BigNumber(0));
     });
 
+    it('Should get ManagerKey', async function() {
+        let key = await rpc.getManagerKey(contractId);
+        expect(key).toEqual(null);
+    });
+
     it('Should get Head', async function() {
         expect(await rpc.getHead()).toBeTruthy();
     });

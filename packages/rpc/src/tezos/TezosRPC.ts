@@ -26,6 +26,11 @@ export class TezosRPC {
         return plainToClass(TezosHead, response.data);
     }
 
+    async getManagerKey(contractId: string): Promise<string> {
+        let response = await axios.get(this.query().getManagerKey(contractId));
+        return response.data;
+    }
+
     async getBlockOperations(block: string): Promise<TezosOperation[]> {
         let response = await axios.get(this.query().getBlockOperations(block));
         const flattened: any[] = [].concat(...response.data);
