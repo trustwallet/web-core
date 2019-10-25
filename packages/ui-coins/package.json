@@ -1,14 +1,22 @@
 {
   "name": "@trustwallet/ui-coins",
-  "version": "0.1.20",
+  "version": "0.1.24",
+  "main": "dist/ui-coins/main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "sh ./build.sh",
+    "prepare": "npm run build",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/trustwallet/web-core.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@angular/animations": "~8.2.7",
     "@angular/common": "~8.2.7",
@@ -49,5 +57,5 @@
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
   },
-  "gitHead": "ddbf95ddf428bf13f2826c66a129b7436b67daf4"
+  "gitHead": "442874b5e07ba86b1da7eacbd516964855ec4d0f"
 }

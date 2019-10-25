@@ -9,9 +9,6 @@ export class Query {
 
     getHead = () => this.uri(`chains/main/blocks/head`);
 
-    getManagerKey = (contractId: string) =>
-        this.uri(`chains/main/blocks/head/context/contracts/${contractId}/manager_key`);
-
     getBlockOperations = (block: string) => this.uri(`chains/main/blocks/${block}/operations`);
 
     broadcastTransaction = () => this.uri(`injection/operation?chain=main`);

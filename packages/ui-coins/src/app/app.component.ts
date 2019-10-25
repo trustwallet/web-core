@@ -6,11 +6,11 @@ import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent implements OnInit {
     @Input() coins: string;
-    @Output() selected = new EventEmitter<CoinModel>();
+    @Input() selected = new ReplaySubject<CoinModel>(1);
 
     coinsObs = new ReplaySubject<CoinModel[]>(1);
 

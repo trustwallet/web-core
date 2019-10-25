@@ -26,18 +26,9 @@ describe('TezosRPC', () => {
         expect(axios.get).toHaveBeenCalledWith(reqUrl);
     });
 
-    /**
-     * @todo
-     */
     it('Should get Head', async function() {
         await rpc.getHead();
         const reqUrl = query.getHead();
-        expect(axios.get).toHaveBeenCalledWith(reqUrl);
-    });
-
-    it('Should get Manager Key', async function() {
-        await rpc.getManagerKey(contractId);
-        const reqUrl = query.getManagerKey(contractId);
         expect(axios.get).toHaveBeenCalledWith(reqUrl);
     });
 
