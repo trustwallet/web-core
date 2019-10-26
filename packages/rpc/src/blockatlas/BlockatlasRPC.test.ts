@@ -20,9 +20,22 @@ describe('BlockatlasRPC', () => {
         expect(axios.get).toHaveBeenCalledWith(addToBeCalled);
     });
 
-    it('should list delegations', async () => {
+    it('should list transactions', async () => {
         await rpc.listTransactions(CoinType.cosmos, address);
         const addToBeCalled = `${getEnv('BLOCKATLAS_RPC_URL')}/v2/cosmos/transactions/${address}`;
         expect(axios.get).toHaveBeenCalledWith(addToBeCalled);
+    });
+
+    it('should list delegations', async () => {
+        await rpc.listDelegations(CoinType.cosmos, address);
+        const addToBeCalled = `${getEnv('BLOCKATLAS_RPC_URL')}/v2/cosmos/staking/delegations/${address}`;
+        expect(axios.get).toHaveBeenCalledWith(addToBeCalled);
+    });
+
+    it('should list delegations batch', async () => {
+        const request = [ { coin: CoinType.cosmos, address }];
+        await rpc.listDelegationsBatch(request);
+        const addToBeCalled = `${getEnv('BLOCKATLAS_RPC_URL')}/v2/staking/delegations`;
+        expect(axios.post).toHaveBeenCalledWith(addToBeCalled, request);
     });
 });

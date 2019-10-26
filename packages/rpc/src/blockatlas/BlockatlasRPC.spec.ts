@@ -23,4 +23,13 @@ describe('blockatlas', () => {
         let result = await rpc.listDelegations(CoinType.cosmos,'cosmos135qla4294zxarqhhgxsx0sw56yssa3z0f78pm0');
         expect(result.docs.length).toBeGreaterThan(0);
     });
+
+    it('should list delegations batch', async () => {
+        const request = [
+            { coin: CoinType.cosmos, address: 'cosmos135qla4294zxarqhhgxsx0sw56yssa3z0f78pm0' }
+        ];
+
+        let result = await rpc.listDelegationsBatch(request);
+        expect(result.docs.length).toBeGreaterThan(0);
+    });
 });

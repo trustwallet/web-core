@@ -13,8 +13,12 @@ export class BlockatlasRPC {
         this.rpcUrl = rpcUrl;
     }
 
-    private query(coin: CoinType): Query {
-        return new Query(this.rpcUrl, CoinTypeUtils.id(coin));
+    private query(coin: CoinType | null = null): Query {
+        const network = coin != null
+            ? CoinTypeUtils.id(coin)
+            : null;
+
+        return new Query(this.rpcUrl, network);
     }
 
     async listTransactions(coin: CoinType, address: string): Promise<BlockatlasValidatorResult> {
@@ -29,6 +33,11 @@ export class BlockatlasRPC {
 
     async listDelegations(coin: CoinType, address: string): Promise<BlockatlasDelegationResult> {
         const response = await axios.get(this.query(coin).listDelegations(address));
+        return plainToClass(BlockatlasDelegationResult, response.data);
+    }
+
+    async listDelegationsBatch(request: { coin: CoinType, address: string }[]): Promise<BlockatlasDelegationResult> {
+        const response = await axios.post(this.query().listDelegationsBatch(), request);
         return plainToClass(BlockatlasDelegationResult, response.data);
     }
 }
