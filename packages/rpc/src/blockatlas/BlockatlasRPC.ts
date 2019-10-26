@@ -1,7 +1,11 @@
 import 'reflect-metadata';
 import axios from 'axios';
 import { plainToClass } from 'class-transformer';
-import { BlockatlasValidatorResult, BlockatlasDelegationResult } from './models';
+import {
+    BlockatlasValidatorResult,
+    BlockatlasDelegationResult,
+    BlockatlasDelegationBatchResult,
+} from './models';
 import { Query } from './Query';
 import { CoinType, CoinTypeUtils } from '@trustwallet/types';
 
@@ -36,8 +40,8 @@ export class BlockatlasRPC {
         return plainToClass(BlockatlasDelegationResult, response.data);
     }
 
-    async listDelegationsBatch(request: { coin: CoinType, address: string }[]): Promise<BlockatlasDelegationResult> {
+    async listDelegationsBatch(request: { coin: CoinType, address: string }[]): Promise<BlockatlasDelegationBatchResult> {
         const response = await axios.post(this.query().listDelegationsBatch(), request);
-        return plainToClass(BlockatlasDelegationResult, response.data);
+        return plainToClass(BlockatlasDelegationBatchResult, response.data);
     }
 }

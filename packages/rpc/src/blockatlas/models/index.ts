@@ -1,3 +1,3 @@
-export { BlockatlasValidator, BlockatlasValidatorResult } from './BlockatlasValidator';
-export { BlockatlasTransactionResult } from './BlockatlasTransaction';
-export { BlockatlasDelegation, BlockatlasDelegationResult } from './BlockatlasDelegation';
+export * from './BlockatlasValidator';
+export * from './BlockatlasTransaction';
+export * from './BlockatlasDelegation';
