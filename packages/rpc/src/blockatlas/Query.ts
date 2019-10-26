@@ -7,10 +7,11 @@ export class Query {
         this.network = network;
     }
 
-    listValidators = () => this.uri(`/staking/validators`);
-    listTransactions = (address: string) => this.uri(`/transactions/${address}`);
+    listValidators = () => this.uri(`staking/validators`);
+    listDelegations = (address: string) => this.uri(`staking/delegations/${address}`);
+    listTransactions = (address: string) => this.uri(`transactions/${address}`);
 
     private uri(path: string): string {
-        return `${this.rpcUrl}/v2/${this.network}${path}`;
+        return `${this.rpcUrl}/v2/${this.network}/${path}`;
     }
 }

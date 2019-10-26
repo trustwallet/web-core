@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getEnv } from '../utils';
 import { BlockatlasRPC } from './BlockatlasRPC';
+import { CoinType } from '@trustwallet/types';
 
 describe('BlockatlasRPC', () => {
     let rpc: BlockatlasRPC;
@@ -8,19 +9,19 @@ describe('BlockatlasRPC', () => {
 
     beforeEach(function() {
         require('dotenv').config({ path: __dirname + '/./.env' });
-        rpc = new BlockatlasRPC(getEnv('BLOCKATLAS_RPC_URL'), 'cosmos');
+        rpc = new BlockatlasRPC(getEnv('BLOCKATLAS_RPC_URL'));
         spyOn(axios, 'get').and.returnValue({ data: '' });
         spyOn(axios, 'post').and.returnValue({ data: '' });
     });
 
     it('should list validators', async () => {
         const addToBeCalled = `${getEnv('BLOCKATLAS_RPC_URL')}/v2/cosmos/staking/validators`;
-        await rpc.listValidators();
+        await rpc.listValidators(CoinType.cosmos);
         expect(axios.get).toHaveBeenCalledWith(addToBeCalled);
     });
 
     it('should list delegations', async () => {
-        await rpc.listTransactions(address);
+        await rpc.listTransactions(CoinType.cosmos, address);
         const addToBeCalled = `${getEnv('BLOCKATLAS_RPC_URL')}/v2/cosmos/transactions/${address}`;
         expect(axios.get).toHaveBeenCalledWith(addToBeCalled);
     });
