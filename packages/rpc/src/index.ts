@@ -23,3 +23,6 @@ export * from './tron/models';
 
 export { TezosRPC } from './tezos/TezosRPC';
 export * from './tezos/models';
+
+export { WavesRPC } from './waves/WavesRPC';
+export * from './waves/models';
