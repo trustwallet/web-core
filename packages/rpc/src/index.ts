@@ -15,3 +15,5 @@ export * from './iotex/models';
 export { TronRPC } from './tron/TronRPC';
 export * from './tron/models';
 export { Utils as TronUtils } from './tron/utils';
+export { WavesRPC } from './waves/WavesRPC';
+export * from './waves/models';
