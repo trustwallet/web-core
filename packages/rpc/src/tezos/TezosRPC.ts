@@ -2,8 +2,7 @@ import axios from 'axios';
 import 'reflect-metadata';
 import { plainToClass } from 'class-transformer';
 import { Query } from './Query';
-import { TezosHead, TezosManagerKey, TezosOperationResult, TezosOperation } from './models';
-import { TezosAccount } from './models/TezosAccount';
+import { TezosContract, TezosHead, TezosOperation, TezosOperationResult } from './models';
 import { NetworkError } from '../errors/network-error';
 
 export class TezosRPC {
@@ -17,35 +16,39 @@ export class TezosRPC {
         return new Query(this.rpcUrl);
     }
 
-    async getAccount(contractId: string): Promise<TezosAccount> {
+    async getAccount(contractId: string): Promise<TezosContract> {
         let response = await axios.get(this.query().getAccount(contractId));
-        return plainToClass(TezosAccount, response.data);
+        return plainToClass(TezosContract, response.data);
     }
 
-    /**
-     * @todo
-     */
     async getHead(): Promise<TezosHead> {
         let response = await axios.get(this.query().getHead());
         return plainToClass(TezosHead, response.data);
     }
 
-    async getManagerKey(contractId: string): Promise<TezosManagerKey> {
+    async getManagerKey(contractId: string): Promise<string> {
         let response = await axios.get(this.query().getManagerKey(contractId));
-        return plainToClass(TezosManagerKey, response.data);
+        return response.data;
     }
 
-    async getBlockOperations(block: string): Promise<TezosOperation> {
+    async getBlockOperations(block: string): Promise<TezosOperation[]> {
         let response = await axios.get(this.query().getBlockOperations(block));
-        return plainToClass(TezosOperation, response.data);
+        const flattened: any[] = [].concat(...response.data);
+
+        return plainToClass(TezosOperation, flattened);
     }
 
     async broadcastTransaction(data: string): Promise<TezosOperationResult> {
         try {
             const url = this.query().broadcastTransaction();
-            const response = await axios.post(url, data);
+            const options = {
+                headers: {
+                    'content-type': 'application/json',
+                },
+            };
+            const response = await axios.post(url, `"${data}"`, options);
             return plainToClass(TezosOperationResult, response.data);
-        } catch (error) {
+        }catch (error) {
             if (error.response) {
                 throw new NetworkError(error.response.status, error.response.data);
             } else {

@@ -1,13 +1,10 @@
 import { getEnv } from '../utils';
 import { BinanceRPC } from './BinanceRPC';
-import { BinanceNodeInfo } from './models';
 
 describe('BinanceRPC', () => {
     let rpc: BinanceRPC;
     let address: string;
     let binanceRpcUrl: string;
-    let marketLimit: number;
-    let marketOffset: number;
     let order: string;
     let symbol: string;
     let transactionHash: string;
@@ -17,8 +14,6 @@ describe('BinanceRPC', () => {
         require('dotenv').config({ path: __dirname + '/../.env' });
         binanceRpcUrl = getEnv('BINANCE_RPC_URL');
         rpc = new BinanceRPC(binanceRpcUrl);
-        marketLimit = 10;
-        marketOffset = 0;
         address = 'bnb1qfmufc2q30cgw82ykjlpfeyauhcf5mad6p5y8t';
         order = 'open';
         symbol = 'MTV-4C6_BNB';
@@ -36,14 +31,8 @@ describe('BinanceRPC', () => {
         expect(markets).toBeTruthy();
     });
 
-    it('Should get Market with limit', async function() {
-        const markets = await rpc.getMarket(marketLimit, marketOffset);
-        expect(markets).toHaveLength(marketLimit);
-    });
-
     it('Should get Node Info', async function() {
         const nodeInfo = await rpc.getNodeInfo();
-        expect(nodeInfo).toBeInstanceOf(BinanceNodeInfo);
         expect(nodeInfo.chainID()).toBeTruthy();
     });
 

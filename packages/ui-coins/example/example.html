@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="main.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+      (function() {
+          setTimeout(() => {
+              console.log(document.getElementById('test').coins);
+              document.getElementById('test').selected.subscribe(coin => {
+                  console.log(coin);
+              })
+          }, 10);
+      })()
+  </script>
+</head>
+<body class="container">
+  <trust-coins style="width: 200px;" id="test" coins='[{"name": "Cosmos", "symbol": "ATOM", "icon": "https://assets.trustwalletapp.com/blockchains/cosmos/info/logo.png", "apr": "10"}, {"name": "Tron", "symbol": "TRX", "icon": "https://assets.trustwalletapp.com/blockchains/tron/info/logo.png", "apr": "11"}]'></trust-coins>
+</body>
+</html>

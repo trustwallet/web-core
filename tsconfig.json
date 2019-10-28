@@ -35,6 +35,7 @@
     { "path": "./packages/provider" },
     { "path": "./packages/types" },
     { "path": "./packages/rpc" },
-    { "path": "./packages/api"}
+    { "path": "./packages/api"},
+    { "path": "./packages/ui-coins"}
   ]
 }

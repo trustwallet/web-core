@@ -1,0 +1,31 @@
+<div ngbDropdown #dropDown="ngbDropdown">
+  <div id="{{ id }}" ngbDropdownToggle *ngIf="item | async as item">
+    <ng-container
+      *ngTemplateOutlet="contentTemplate; context: { $implicit: item }"
+    ></ng-container>
+  </div>
+  <div
+    ngbDropdownMenu
+    [attr.aria-labelledby]="id"
+    class="dropdown-menu p-0 w-100"
+  >
+    <app-listview
+      [containerized]="false"
+      [placeholdersCount]="5"
+      (select)="selected($event)"
+      [dataSource]="items"
+      class="d-block w-100"
+    >
+      <ng-container *ngIf="sectionTemplate">
+        <ng-template section>
+          <ng-container *ngTemplateOutlet="sectionTemplate"></ng-container>
+        </ng-template>
+      </ng-container>
+      <ng-container *item="let item">
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"
+        ></ng-container>
+      </ng-container>
+    </app-listview>
+  </div>
+</div>
