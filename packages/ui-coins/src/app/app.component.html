@@ -10,7 +10,7 @@
       <ng-template right>Current APY</ng-template>
     </app-block-between>
   </ng-template>
-  <div *content="let item" class="btn btn-outline-primary d-block selector coin-item-selected">
+  <div *content="let item" class="btn btn-outline-primary d-block selector coin-item-selected trust-deopdown">
     <app-block-between>
       <ng-template left>
         <app-label [image]="item.icon" alt="{{ item.name }}">
@@ -20,7 +20,7 @@
         </app-label>
       </ng-template>
       <ng-template right>
-        <small class="success text-nowrap"
+        <small class="text-nowrap interest"
         >{{ item.apr }}%
           <span class="ml-1"
           ><i class="mr-0 text-muted fa fa-chevron-down"></i></span
@@ -38,7 +38,7 @@
         </app-label>
       </ng-template>
       <ng-template right>
-        <small class="success text-nowrap"
+        <small class="interest text-nowrap"
         >{{ item.apr }}%
         </small>
       </ng-template>
