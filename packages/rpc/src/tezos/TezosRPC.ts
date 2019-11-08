@@ -2,7 +2,7 @@ import axios from 'axios';
 import 'reflect-metadata';
 import { plainToClass } from 'class-transformer';
 import { Query } from './Query';
-import { TezosContract, TezosHead, TezosOperation, TezosOperationResult } from './models';
+import { TezosContract, TezosHead, TezosOperation } from './models';
 import { NetworkError } from '../errors/network-error';
 
 export class TezosRPC {
@@ -38,7 +38,7 @@ export class TezosRPC {
         return plainToClass(TezosOperation, flattened);
     }
 
-    async broadcastTransaction(data: string): Promise<TezosOperationResult> {
+    async broadcastTransaction(data: string): Promise<string> {
         try {
             const url = this.query().broadcastTransaction();
             const options = {
@@ -47,7 +47,7 @@ export class TezosRPC {
                 },
             };
             const response = await axios.post(url, `"${data}"`, options);
-            return plainToClass(TezosOperationResult, response.data);
+            return response.data;
         }catch (error) {
             if (error.response) {
                 throw new NetworkError(error.response.status, error.response.data);
