@@ -7,4 +7,6 @@ export class TezosContract {
 
     @Transform(value => new BigNumber(value), { toClassOnly: true })
     counter: BigNumber;
+
+    delegate?: string;
 }
