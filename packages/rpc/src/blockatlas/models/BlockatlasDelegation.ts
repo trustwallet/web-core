@@ -57,6 +57,10 @@ export class BlockatlasDelegationBatch {
     @Type(() => BlockatlasStakingDetails)
     details: BlockatlasStakingDetails;
     error: string;
+
+    get stakedBalance(): BigNumber {
+        return this.delegations.reduce((acc, delegation) => acc.plus(delegation.value), new BigNumber(0))
+    }
 }
 
 export class BlockatlasDelegationBatchResult extends BlockatlasResult {
