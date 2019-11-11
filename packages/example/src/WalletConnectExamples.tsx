@@ -2,9 +2,11 @@ import * as React from 'react';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import WalletConnect from '@trustwallet/walletconnect';
 import WalletConnectQRCodeModal from '@walletconnect/qrcode-modal';
-import { Account } from '@trustwallet/types';
+import { Account, CoinType } from '@trustwallet/types';
+import { RefObject } from 'react';
 
 interface State {
     isConnected: boolean;
@@ -19,6 +21,8 @@ export default class WalletConnectExamples extends React.Component<Props, State>
     private walletConnector: WalletConnect = new WalletConnect({
         bridge: 'https://bridge.walletconnect.org', // Required
     });
+
+    private ethSendInput = React.createRef<HTMLInputElement>();
 
     constructor(props: Props) {
         super(props);
@@ -96,6 +100,38 @@ export default class WalletConnectExamples extends React.Component<Props, State>
 
         return accounts[0];
     }
+
+    testEthSignTransaction = async (): Promise<void> => {
+        let { openModal } = this.props;
+        try {
+            let account = await this.getAccount(CoinType.ethereum);
+            let to = this.ethSendInput.current!.value;
+            let tx = await this.walletConnector.signTransaction({
+                from: account.address,
+                to: to,
+                value: "0x2386F26FC10000"
+            });
+            openModal('Eth Sign Transaction', <samp>{tx}</samp>);
+        } catch (e) {
+            openModal('Eth Sign Transaction Error', <div>{e}</div>);
+        }
+    };
+
+    testEthSendTransaction = async (): Promise<void> => {
+        let { openModal } = this.props;
+        try {
+            let account = await this.getAccount(CoinType.ethereum);
+            let to = this.ethSendInput.current!.value;
+            let tx = await this.walletConnector.sendTransaction({
+                from: account.address,
+                to: to,
+                value: "0x2386F26FC10000"
+            });
+            openModal('Accounts', <samp>{tx}</samp>);
+        } catch (e) {
+            openModal('Accounts Error', <div>{e}</div>);
+        }
+    };
 
     testGetAccounts = async (): Promise<void> => {
         let { openModal } = this.props;
@@ -270,6 +306,18 @@ export default class WalletConnectExamples extends React.Component<Props, State>
                         <Button size="lg" disabled={!isConnected} onClick={this.testGetAccounts}>
                             Get Accounts
                         </Button>
+                    </Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header>Eth Transaction Examples</Card.Header>
+                    <Card.Body>
+                        <Button size="lg" disabled={!isConnected} onClick={this.testEthSignTransaction}>
+                            Sign Transaction
+                        </Button>
+                        <Button size="lg" disabled={!isConnected} onClick={this.testEthSendTransaction}>
+                            Send Transaction
+                        </Button>
+                        <Form.Control type="text" placeholder="Enter Destination Address" ref={this.ethSendInput as RefObject<any>} />
                     </Card.Body>
                 </Card>
                 <Card>
