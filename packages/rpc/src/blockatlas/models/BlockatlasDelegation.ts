@@ -43,7 +43,7 @@ export class BlockatlasDelegation {
 
 export class BlockatlasDelegationResult extends BlockatlasResult {
     @Type(() => BlockatlasDelegation)
-    docs: BlockatlasDelegation[];
+    delegations: BlockatlasDelegation[];
 }
 
 export class BlockatlasDelegationBatch {

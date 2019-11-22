@@ -21,7 +21,7 @@ describe('blockatlas', () => {
 
     it('should list delegations', async () => {
         let result = await rpc.listDelegations(CoinType.cosmos,'cosmos135qla4294zxarqhhgxsx0sw56yssa3z0f78pm0');
-        expect(result.docs.length).toBeGreaterThan(0);
+        expect(result.delegations.length).toBeGreaterThan(0);
     });
 
     it('should list delegations batch', async () => {

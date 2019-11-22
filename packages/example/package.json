@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/example",
-  "version": "0.1.16",
+  "version": "0.1.35",
   "private": true,
   "dependencies": {
     "@trustwallet/provider": "^0.1.16",
