@@ -28,7 +28,11 @@ export class TezosRPC {
 
     async getManagerKey(contractId: string): Promise<string> {
         let response = await axios.get(this.query().getManagerKey(contractId));
-        return response.data;
+        if (response.data === null) return null;
+
+        let data = response.data.replace("\n", "");
+        if (data === "null" || data === "") return null;
+        return data;
     }
 
     async getBlockOperations(block: string): Promise<TezosOperation[]> {
