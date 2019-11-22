@@ -1,6 +1,6 @@
 {
   "name": "@trustwallet/rpc",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "description": "RPC service repository",
   "main": "lib/index.js",
   "directories": {
