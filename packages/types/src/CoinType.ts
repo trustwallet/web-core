@@ -290,7 +290,123 @@ export class CoinTypeUtils {
         return 9;
     }
   }
-  static networkName(coin: CoinType): string {
+  static networkName(coin: CoinType, showDisplayName = true): string {
+    switch (coin) {
+      case CoinType.nebulas:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Nebulas';
+      case CoinType.ethereum:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Ethereum';
+      case CoinType.bitcoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Bitcoin';
+      case CoinType.bitcoincash:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Bitcoin Cash';
+      case CoinType.callisto:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Callisto';
+      case CoinType.dash:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Dash';
+      case CoinType.decred:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Decred';
+      case CoinType.digibyte:
+        return showDisplayName ? this.displayNetworkName(coin) : 'DigiByte';
+      case CoinType.doge:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Dogecoin';
+      case CoinType.classic:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Ethereum Classic';
+      case CoinType.ellaism:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Ellaism';
+      case CoinType.ethersocial:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Ethersocial';
+      case CoinType.gochain:
+        return showDisplayName ? this.displayNetworkName(coin) : 'GoChain';
+      case CoinType.groestlcoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Groestlcoin';
+      case CoinType.icon:
+        return showDisplayName ? this.displayNetworkName(coin) : 'ICON';
+      case CoinType.iost:
+        return showDisplayName ? this.displayNetworkName(coin) : 'IOST';
+      case CoinType.litecoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Litecoin';
+      case CoinType.ontology:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Ontology';
+      case CoinType.viacoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Viacoin';
+      case CoinType.poa:
+        return showDisplayName ? this.displayNetworkName(coin) : 'POA Network';
+      case CoinType.thundertoken:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Thunder Token';
+      case CoinType.tomochain:
+        return showDisplayName ? this.displayNetworkName(coin) : 'TomoChain';
+      case CoinType.tron:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Tron';
+      case CoinType.vechain:
+        return showDisplayName ? this.displayNetworkName(coin) : 'VeChain';
+      case CoinType.wanchain:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Wanchain';
+      case CoinType.xdai:
+        return showDisplayName ? this.displayNetworkName(coin) : 'xDai';
+      case CoinType.zcoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Zcoin';
+      case CoinType.zcash:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Zcash';
+      case CoinType.binance:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Binance';
+      case CoinType.ripple:
+        return showDisplayName ? this.displayNetworkName(coin) : 'XRP';
+      case CoinType.tezos:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Tezos';
+      case CoinType.nimiq:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Nimiq';
+      case CoinType.stellar:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Stellar';
+      case CoinType.aion:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Aion';
+      case CoinType.cosmos:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Cosmos';
+      case CoinType.neo:
+        return showDisplayName ? this.displayNetworkName(coin) : 'NEO';
+      case CoinType.kin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Kin';
+      case CoinType.theta:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Theta';
+      case CoinType.lux:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Lux';
+      case CoinType.qtum:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Qtum';
+      case CoinType.bravocoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'BravoCoin';
+      case CoinType.steem:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Steem';
+      case CoinType.eos:
+        return showDisplayName ? this.displayNetworkName(coin) : 'EOS';
+      case CoinType.nano:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Nano';
+      case CoinType.iotex:
+        return showDisplayName ? this.displayNetworkName(coin) : 'IoTeX';
+      case CoinType.zilliqa:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Zilliqa';
+      case CoinType.semux:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Semux';
+      case CoinType.dexon:
+        return showDisplayName ? this.displayNetworkName(coin) : 'DEXON';
+      case CoinType.zelcash:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Zelcash';
+      case CoinType.ark:
+        return showDisplayName ? this.displayNetworkName(coin) : 'ARK';
+      case CoinType.ravencoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Ravencoin';
+      case CoinType.waves:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Waves';
+      case CoinType.aeternity:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Aeternity';
+      case CoinType.terra:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Terra';
+      case CoinType.monacoin:
+        return showDisplayName ? this.displayNetworkName(coin) : 'Monacoin';
+      case CoinType.fio:
+        return showDisplayName ? this.displayNetworkName(coin) : 'FIO';
+    }
+  }
+  static displayNetworkName(coin: CoinType) {
     switch (coin) {
       case CoinType.nebulas:
         return 'Nebulas';
@@ -349,7 +465,7 @@ export class CoinTypeUtils {
       case CoinType.zcash:
         return 'Zcash';
       case CoinType.binance:
-        return 'Binance';
+        return 'BNB';
       case CoinType.ripple:
         return 'XRP';
       case CoinType.tezos:
