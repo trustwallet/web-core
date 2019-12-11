@@ -280,6 +280,38 @@ export default class ProviderExamples extends React.Component<Props, {}> {
         }
     };
 
+    testEthSignTransaction = async (): Promise<void> => {
+        let { openModal } = this.props;
+
+        try {
+            let network = 60; // Ethereum
+            let transaction = {
+                "chainId":"AQ==",
+                "gasPrice":"1pOkAA==",
+                "gasLimit":"Ugg=",
+                "toAddress":"0x7d8bf18C7cE84b3E175b339c4Ca93aEd1dD166F1",
+                "amount":"A0i8paFgAA=="
+            };
+            
+            /* Transaction in hex:
+                {
+                    "chainId":"0x01",
+                    "gasPrice":"0xd693a400",
+                    "gasLimit":"0x5208",
+                    "toAddress":"0x7d8bf18C7cE84b3E175b339c4Ca93aEd1dD166F1",
+                    "amount":"0x0348bca5a16000"
+                }
+            */
+
+            let result = await TrustProvider.signTransaction(network, transaction);
+            console.log(result);
+            openModal('Ethereum Transaction Signed', <samp>{result}</samp>);
+        } catch (e) {
+            openModal('Sign Error', <div>{e}</div>);
+        }
+
+    };
+
     get isAvailable(): boolean {
         return TrustProvider.isAvailable;
     }
@@ -298,6 +330,14 @@ export default class ProviderExamples extends React.Component<Props, {}> {
                         </Card.Title>
                         <Button size="lg" disabled={!this.isAvailable} onClick={this.testGetAccounts}>
                             Get Accounts
+                        </Button>
+                    </Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header>Sign Ethereum Transaction Examples</Card.Header>
+                    <Card.Body>
+                        <Button size="lg" disabled={!this.isAvailable} onClick={this.testEthSignTransaction}>
+                            Transaction
                         </Button>
                     </Card.Body>
                 </Card>
