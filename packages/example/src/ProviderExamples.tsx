@@ -290,16 +290,18 @@ export default class ProviderExamples extends React.Component<Props, {}> {
                 "gasPrice":"1pOkAA==",
                 "gasLimit":"Ugg=",
                 "toAddress":"0x7d8bf18C7cE84b3E175b339c4Ca93aEd1dD166F1",
-                "amount":"A0i8paFgAA=="
+                "amount":"A0i8paFgAA==",
+                "nonce": "CQ==",
             };
-            
+
             /* Transaction in hex:
                 {
                     "chainId":"0x01",
                     "gasPrice":"0xd693a400",
                     "gasLimit":"0x5208",
                     "toAddress":"0x7d8bf18C7cE84b3E175b339c4Ca93aEd1dD166F1",
-                    "amount":"0x0348bca5a16000"
+                    "amount":"0x0348bca5a16000",
+                    "nonce": "0x09
                 }
             */
 
