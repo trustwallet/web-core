@@ -62,7 +62,12 @@ describe('CosmosRPC', () => {
     });
 
     it('should list get rewards', async () => {
-        spyOn(axios, 'get').and.returnValue({ data: [] });
+        spyOn(axios, 'get').and.returnValue({
+            data: {
+                result: { total: [] }
+            }
+        });
+
         await rpc.getRewards(delegator);
         const toBeCalled = `${getEnv('COSMOS_RPC_URL')}/distribution/delegators/${delegator}/rewards`;
         expect(axios.get).toHaveBeenCalledWith(toBeCalled);
