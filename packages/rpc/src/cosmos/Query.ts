@@ -5,6 +5,7 @@ export class Query {
         this.rpcUrl = rpcUrl;
     }
 
+    getTransaction = (tx: String) => this.uri(`txs/${tx}`);
     listDelegations = (address: string) => this.uri(`staking/delegators/${address}/delegations`);
     listDelegationTransactions = (address: string) => this.uri(`staking/delegators/${address}/txs`);
     listUnbondDelegations = (address: string) => this.uri(`staking/delegators/${address}/unbonding_delegations`);

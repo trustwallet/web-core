@@ -31,12 +31,12 @@ describe('cosmosRPC', () => {
     });
 
     it('should list staking delegation transactions', async () => {
-        let delegations = await rpc.listStakingTransactions(address);
+        let delegations = await rpc.listStakingTransactions(delegationAddress);
         expect(delegations.length).toBeTruthy();
     });
 
     it('should list unstaking delegation transactions', async () => {
-        let delegations = await rpc.listUnstakingTransactions(address);
+        let delegations = await rpc.listUnstakingTransactions(delegationAddress);
         expect(delegations.length).toBeTruthy();
     });
 
@@ -47,22 +47,27 @@ describe('cosmosRPC', () => {
 
     it('should list unbonding delegations', async () => {
         let delegations = await rpc.listUnbondDelegations(delegator);
-        expect(delegations.length).toBeTruthy();
+        expect(delegations.length).toBeGreaterThan(0);
     });
 
-    it('should list get rewards', async () => {
+    it('should get rewards', async () => {
         let reward = await rpc.getRewards(delegator);
         expect(reward.toNumber()).toBeGreaterThan(0.0);
     });
 
-    it('get unstaking release date', async () => {
+    it('should get unstaking release date', async () => {
         let date = await rpc.unstakingReleaseDate(delegator);
         expect(date.getTime()).toBeGreaterThan(Date.now());
     });
 
-    it('get staking parameters', async () => {
+    it('should get staking parameters', async () => {
         let info = await rpc.getStakingParameters();
         expect(info.timeFrame.day).toBeGreaterThan(1);
+    });
+
+    it('should get transaction', async () => {
+        let info = await rpc.getTransaction("6C59C47E737039E07F798E810B9961E619A6CE89BBBD41C0F3908E4024DE43F8");
+        expect(info.txhash).toBe("6C59C47E737039E07F798E810B9961E619A6CE89BBBD41C0F3908E4024DE43F8");
     });
 
     it('should broadcast transaction', async () => {
