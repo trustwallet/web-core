@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { plainToClass } from 'class-transformer';
-import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult } from './models';
+import { CosmosDelegation, CosmosAccount, CosmosBroadcastResult, CosmosTxPage, CosmosRewardsResult } from "./models";
 import { Query } from './Query';
 import { CosmosAccountResult } from './models/CosmosAccount';
 import { CosmosUnbond } from './models/CosmosUnbond';
-import { CosmosAmount } from './models/CosmosAmount';
 import BigNumber from 'bignumber.js';
 import { Utils } from './utils';
 import { CosmosStakingInfo } from './models/CosmosStakingInfo';
@@ -40,7 +39,7 @@ export class CosmosRPC {
     async getRewards(address: string): Promise<BigNumber> {
         let response = await axios.get(this.query().getRewards(address));
         return Utils.toAtom(
-            plainToClass<CosmosAmount, any[]>(CosmosAmount, response.data).reduce(
+            plainToClass(CosmosRewardsResult, response.data).result.total.reduce(
                 (acc, reward) => acc.plus(reward.amount),
                 new BigNumber(0),
             ),
@@ -66,20 +65,27 @@ export class CosmosRPC {
 
     async listStakingTransactions(address: string, validator?: string): Promise<CosmosTx[]> {
         let response = await axios.get(this.query().listDelegationTransactions(address));
-        return plainToClass<CosmosTx, any[]>(CosmosTx, response.data).filter(
-            tx =>
+        return plainToClass<CosmosTxPage, any[]>(CosmosTxPage, response.data)
+            .reduce((acc, page) => [...acc, ...page.txs], ([] as CosmosTx[]))
+            .filter(tx =>
                 tx.tx.value.msg[0].type === CosmosTxInternalType.DELEGATE &&
                 (validator ? tx.tx.value.msg[0].value.validator_address === validator : true),
-        );
+            );
     }
 
     async listUnstakingTransactions(address: string, validator?: string): Promise<CosmosTx[]> {
         let response = await axios.get(this.query().listDelegationTransactions(address));
-        return plainToClass<CosmosTx, any[]>(CosmosTx, response.data).filter(
-            tx =>
+        return plainToClass<CosmosTxPage, any[]>(CosmosTxPage, response.data)
+            .reduce((acc, page) => [...acc, ...page.txs], ([] as CosmosTx[]))
+            .filter(tx =>
                 tx.tx.value.msg[0].type === CosmosTxInternalType.UNDELEGATE &&
                 (validator ? tx.tx.value.msg[0].value.validator_address === validator : true),
         );
+    }
+
+    async getTransaction(tx: String): Promise<CosmosTx> {
+        let response = await axios.get(this.query().getTransaction(tx));
+        return plainToClass(CosmosTx, response.data);
     }
 
     async broadcastTransaction(data: string): Promise<CosmosBroadcastResult> {

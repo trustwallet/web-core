@@ -1,5 +1,6 @@
 import { Transform, Type } from 'class-transformer';
 import { CosmosAmount } from './CosmosAmount';
+import BigNumber from "bignumber.js";
 
 export enum CosmosTxInternalType {
     NONE,
@@ -119,4 +120,24 @@ export class CosmosTx {
 
     @Type(() => Date)
     timestamp: Date;
+}
+
+export class CosmosTxPage {
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
+    total_count: BigNumber;
+
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
+    count: BigNumber;
+
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
+    page_number: BigNumber;
+
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
+    page_total: BigNumber;
+
+    @Transform(value => new BigNumber(value), { toClassOnly: true })
+    limit: BigNumber;
+
+    @Type(() => CosmosTx)
+    txs: CosmosTx[];
 }
